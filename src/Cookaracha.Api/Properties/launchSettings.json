@@ -9,7 +9,7 @@
         }
     },
     "profiles": {
-        "LaCookaracha.Api": {
+        "Cookaracha.Api": {
             "commandName": "Project",
             "launchBrowser": false,
             "launchUrl": "home",

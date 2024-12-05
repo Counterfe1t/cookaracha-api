@@ -1,6 +1,0 @@
-@LaCookaracha.Api_HostAddress = http://localhost:2137
-
-GET {{LaCookaracha.Api_HostAddress}}/home
-Accept: application/json
-
-###

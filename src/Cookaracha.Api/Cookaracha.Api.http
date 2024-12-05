@@ -1,0 +1,6 @@
+@Cookaracha.Api_HostAddress = http://localhost:2137
+
+GET {{Cookaracha.Api_HostAddress}}/home
+Accept: application/json
+
+###
