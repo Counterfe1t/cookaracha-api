@@ -12,7 +12,7 @@
         "LaCookaracha.Api": {
             "commandName": "Project",
             "launchBrowser": false,
-            "launchUrl": "api/home",
+            "launchUrl": "home",
             "environmentVariables": {
                 "ASPNETCORE_ENVIRONMENT": "Development"
             },
@@ -22,7 +22,7 @@
         "IIS Express": {
             "commandName": "IISExpress",
             "launchBrowser": true,
-            "launchUrl": "api/home",
+            "launchUrl": "home",
             "environmentVariables": {
                 "ASPNETCORE_ENVIRONMENT": "Development"
             }
