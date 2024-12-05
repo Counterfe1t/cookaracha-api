@@ -4,8 +4,8 @@ namespace LaCookaracha.Api.Controllers;
 
 [ApiController]
 [Route("api/home")]
-public class HomeController
+public class HomeController : ControllerBase
 {
     [HttpGet]
-    public ActionResult<string> Get() => "LaCookaracha.Api";
+    public ActionResult<string> Get() => Ok("LaCookaracha.Api");
 }
