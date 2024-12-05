@@ -1,1 +1,3 @@
-# la-cookaracha-api
+# Cookaracha API
+
+* Detailed documentation TBD
