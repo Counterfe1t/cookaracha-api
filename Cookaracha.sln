@@ -7,6 +7,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A68FB9DA-215
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cookaracha.Api", "src\Cookaracha.Api\Cookaracha.Api.csproj", "{83AB9AC9-5239-403E-A0D4-61E1A502BA57}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cookaracha.Core", "src\Cookaracha.Core\Cookaracha.Core.csproj", "{2BB9261E-AC78-4B0A-B9B6-8FE0D668C5BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cookaracha.Application", "src\Cookaracha.Application\Cookaracha.Application.csproj", "{FEEF81FA-96B8-453A-BA7A-4FF81A744E0D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cookaracha.Infrastructure", "src\Cookaracha.Infrastructure\Cookaracha.Infrastructure.csproj", "{F5179EE2-AF73-4643-A120-78C3179027B4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,11 +23,26 @@ Global
 		{83AB9AC9-5239-403E-A0D4-61E1A502BA57}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83AB9AC9-5239-403E-A0D4-61E1A502BA57}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{83AB9AC9-5239-403E-A0D4-61E1A502BA57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2BB9261E-AC78-4B0A-B9B6-8FE0D668C5BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2BB9261E-AC78-4B0A-B9B6-8FE0D668C5BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2BB9261E-AC78-4B0A-B9B6-8FE0D668C5BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2BB9261E-AC78-4B0A-B9B6-8FE0D668C5BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEEF81FA-96B8-453A-BA7A-4FF81A744E0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEEF81FA-96B8-453A-BA7A-4FF81A744E0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEEF81FA-96B8-453A-BA7A-4FF81A744E0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEEF81FA-96B8-453A-BA7A-4FF81A744E0D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5179EE2-AF73-4643-A120-78C3179027B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5179EE2-AF73-4643-A120-78C3179027B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5179EE2-AF73-4643-A120-78C3179027B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5179EE2-AF73-4643-A120-78C3179027B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{83AB9AC9-5239-403E-A0D4-61E1A502BA57} = {A68FB9DA-2159-403B-8994-D8C67C7F2F1D}
+		{2BB9261E-AC78-4B0A-B9B6-8FE0D668C5BC} = {A68FB9DA-2159-403B-8994-D8C67C7F2F1D}
+		{FEEF81FA-96B8-453A-BA7A-4FF81A744E0D} = {A68FB9DA-2159-403B-8994-D8C67C7F2F1D}
+		{F5179EE2-AF73-4643-A120-78C3179027B4} = {A68FB9DA-2159-403B-8994-D8C67C7F2F1D}
 	EndGlobalSection
 EndGlobal
