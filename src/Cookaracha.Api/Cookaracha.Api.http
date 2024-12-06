@@ -4,3 +4,8 @@ GET {{Cookaracha.Api_HostAddress}}/home
 Accept: application/json
 
 ###
+
+GET {{Cookaracha.Api_HostAddress}}/products
+Accept: application/json
+
+###
