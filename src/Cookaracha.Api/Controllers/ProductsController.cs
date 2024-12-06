@@ -17,4 +17,14 @@ public class ProductsController : ControllerBase
 
     [HttpGet]
     public async Task<ActionResult<IEnumerable<ProductDto>>> Get() => Ok(await _productsService.GetAllAsync());
+
+    [HttpGet("{id:guid}")]
+    public async Task<ActionResult<ProductDto>> Get([FromRoute] Guid id)
+    {
+        var result = await _productsService.GetAsync(id);
+        
+        return result is null
+            ? NotFound()
+            : Ok(result);
+    }
 }

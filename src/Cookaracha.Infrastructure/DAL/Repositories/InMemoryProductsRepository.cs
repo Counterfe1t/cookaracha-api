@@ -14,5 +14,9 @@ internal class InMemoryProductsRepository : IProductsRepository
         new(Guid.Parse("00000000-0000-0000-0000-000000000005"), "Lemon"),
     ];
 
-    public async Task<IEnumerable<Product>> GetAllAsync() => await Task.FromResult(_products);
+    public async Task<IEnumerable<Product>> GetAllAsync()
+        => await Task.FromResult(_products);
+
+    public async Task<Product?> GetAsync(Guid id)
+        => await Task.FromResult(_products.FirstOrDefault(x => x.Id == id));
 }

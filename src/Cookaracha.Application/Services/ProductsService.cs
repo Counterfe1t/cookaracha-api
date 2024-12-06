@@ -19,4 +19,19 @@ public class ProductsService : IProductsService
             Id = x.Id,
             Name = x.Name,
         });
+
+    public async Task<ProductDto?> GetAsync(Guid id)
+    {
+        var product = await _productsRepository.GetAsync(id);
+        if (product is null)
+        {
+            return default;
+        }
+
+        return new ProductDto
+        {
+            Id = product.Id,
+            Name = product.Name
+        };
+    }
 }
