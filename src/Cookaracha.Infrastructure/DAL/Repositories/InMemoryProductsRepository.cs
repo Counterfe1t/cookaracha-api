@@ -19,4 +19,17 @@ internal class InMemoryProductsRepository : IProductsRepository
 
     public async Task<Product?> GetAsync(Guid id)
         => await Task.FromResult(_products.FirstOrDefault(x => x.Id == id));
+
+    public Task AddAsync(Product product)
+    {
+        _products.Add(product);
+
+        return Task.CompletedTask;
+    }
+
+    public Task UpdateAsync(Product product)
+    {
+        // Update product
+        return Task.CompletedTask;
+    }
 }
