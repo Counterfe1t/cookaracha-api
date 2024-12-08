@@ -9,4 +9,5 @@ public interface IProductsService
     Task<ProductDto?> GetAsync(Guid id);
     Task<Guid?> CreateProductAsync(CreateProduct command);
     Task<bool> UpdateProductAsync(UpdateProduct command);
+    Task<bool> DeleteProductAsync(DeleteProduct command);
 }

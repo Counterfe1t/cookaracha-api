@@ -63,4 +63,17 @@ public class ProductsService : IProductsService
 
         return true;
     }
+
+    public async Task<bool> DeleteProductAsync(DeleteProduct command)
+    {
+        var product = await _productsRepository.GetAsync(command.Id);
+        if (product is null)
+        {
+            return false;
+        }
+
+        await _productsRepository.DeleteAsync(product);
+
+        return true;
+    }
 }

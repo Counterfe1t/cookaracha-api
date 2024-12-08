@@ -17,16 +17,17 @@ public class ProductsController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<ProductDto>>> Get() => Ok(await _productsService.GetAllAsync());
+    public async Task<ActionResult<IEnumerable<ProductDto>>> Get()
+        => Ok(await _productsService.GetAllAsync());
 
     [HttpGet("{id:guid}")]
     public async Task<ActionResult<ProductDto>> Get([FromRoute] Guid id)
     {
         var result = await _productsService.GetAsync(id);
         
-        return result is null
-            ? NotFound()
-            : Ok(result);
+        return result is not null
+            ? Ok(result)
+            : NotFound();
     }
 
     [HttpPost]
@@ -34,16 +35,20 @@ public class ProductsController : ControllerBase
     {
         var result = await _productsService.CreateProductAsync(command with { Id = Guid.NewGuid() });
         
-        return result is null
-            ? BadRequest()
-            : CreatedAtAction(nameof(Post), result);
+        return result is not null
+            ? CreatedAtAction(nameof(Post), result)
+            : BadRequest();
     }
 
     [HttpPut("{id:guid}")]
     public async Task<ActionResult> Put([FromRoute] Guid id, [FromBody] UpdateProduct command)
-    {
-        return await _productsService.UpdateProductAsync(command with { Id = id })
+        => await _productsService.UpdateProductAsync(command with { Id = id })
             ? NoContent()
             : BadRequest();
-    }
+
+    [HttpDelete("{id:guid}")]
+    public async Task<ActionResult> Delete([FromRoute] Guid id)
+        => await _productsService.DeleteProductAsync(new DeleteProduct(id))
+            ? NoContent()
+            : NotFound();
 }

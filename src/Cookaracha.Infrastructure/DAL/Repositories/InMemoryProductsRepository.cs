@@ -30,6 +30,14 @@ internal class InMemoryProductsRepository : IProductsRepository
     public Task UpdateAsync(Product product)
     {
         // Update product
+
+        return Task.CompletedTask;
+    }
+
+    public Task DeleteAsync(Product product)
+    {
+        _products.Remove(product);
+
         return Task.CompletedTask;
     }
 }

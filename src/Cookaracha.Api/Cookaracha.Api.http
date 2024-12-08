@@ -12,7 +12,7 @@ Accept: application/json
 
 ### Get product by id
 
-GET {{Cookaracha.Api_HostAddress}}/products/2eb1bf45-4623-42da-b45c-30818f376d49
+GET {{Cookaracha.Api_HostAddress}}/products/bb27c9b2-9f0b-4c5d-99e5-7be8cb9e29d7
 Accept: application/json
 
 ### Create new product
@@ -25,8 +25,13 @@ Content-Type: application/json
 
 ### Update product
 
-PUT {{Cookaracha.Api_HostAddress}}/products/2eb1bf45-4623-42da-b45c-30818f376d49
+PUT {{Cookaracha.Api_HostAddress}}/products/bb27c9b2-9f0b-4c5d-99e5-7be8cb9e29d7
 Content-Type: application/json
 {
     "name": "Peach"
 }
+
+### Delete product
+
+DELETE {{Cookaracha.Api_HostAddress}}/products/00000000-0000-0000-0000-000000000001
+Accept: application/json
