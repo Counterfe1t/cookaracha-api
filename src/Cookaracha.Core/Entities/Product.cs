@@ -1,11 +1,13 @@
-﻿namespace Cookaracha.Core.Entities;
+﻿using Cookaracha.Core.ValueObjects;
 
-public class Product
+namespace Cookaracha.Core.Entities;
+
+public sealed class Product
 {
-    public Guid Id { get; private set; }
-    public string Name { get; private set; }
+    public ProductId Id { get; private set; }
+    public ProductName Name { get; private set; }
 
-    public Product(Guid id, string name)
+    public Product(ProductId id, ProductName name)
     {
         Id = id;
         Name = name;

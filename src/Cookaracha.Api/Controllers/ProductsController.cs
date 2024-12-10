@@ -1,6 +1,7 @@
 ﻿using Cookaracha.Application.Commands;
 using Cookaracha.Application.Dtos;
 using Cookaracha.Application.Interfaces;
+using Cookaracha.Core.ValueObjects;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Cookaracha.Api.Controllers;
@@ -24,7 +25,7 @@ public class ProductsController : ControllerBase
     public async Task<ActionResult<ProductDto>> Get([FromRoute] Guid id)
     {
         var result = await _productsService.GetAsync(id);
-        
+
         return result is not null
             ? Ok(result)
             : NotFound();
@@ -33,8 +34,8 @@ public class ProductsController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<Guid>> Post([FromBody] CreateProduct command)
     {
-        var result = await _productsService.CreateProductAsync(command with { Id = Guid.NewGuid() });
-        
+        var result = await _productsService.CreateProductAsync(command with { Id = ProductId.Create() });
+
         return result is not null
             ? CreatedAtAction(nameof(Post), result)
             : BadRequest();

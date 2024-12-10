@@ -1,7 +1,6 @@
 ﻿using Cookaracha.Application.Commands;
 using Cookaracha.Application.Dtos;
 using Cookaracha.Application.Interfaces;
-using Cookaracha.Core.Entities;
 using Cookaracha.Core.Repositories;
 
 namespace Cookaracha.Application.Services;
@@ -26,9 +25,7 @@ public class ProductsService : IProductsService
     {
         var product = await _productsRepository.GetAsync(id);
         if (product is null)
-        {
             return default;
-        }
 
         return new()
         {
@@ -46,18 +43,11 @@ public class ProductsService : IProductsService
 
     public async Task<bool> UpdateProductAsync(UpdateProduct command)
     {
-        if (string.IsNullOrWhiteSpace(command.Name))
-        {
-            return false;
-        }
-
         var product = await _productsRepository.GetAsync(command.Id);
         if (product is null)
-        {
             return false;
-        }
 
-        product = new Product(command.Id, command.Name);
+        product = new(command.Id, command.Name);
 
         await _productsRepository.UpdateAsync(product);
 
@@ -68,9 +58,7 @@ public class ProductsService : IProductsService
     {
         var product = await _productsRepository.GetAsync(command.Id);
         if (product is null)
-        {
             return false;
-        }
 
         await _productsRepository.DeleteAsync(product);
 
