@@ -34,12 +34,8 @@ public class ProductsService : IProductsService
         };
     }
 
-    public async Task<Guid?> CreateProductAsync(CreateProduct command)
-    {
-        await _productsRepository.AddAsync(new(command.Id, command.Name));
-
-        return command.Id;
-    }
+    public async Task CreateProductAsync(CreateProduct command)
+        => await _productsRepository.AddAsync(new(command.Id, command.Name));
 
     public async Task<bool> UpdateProductAsync(UpdateProduct command)
     {

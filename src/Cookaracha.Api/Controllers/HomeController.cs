@@ -3,7 +3,7 @@
 namespace Cookaracha.Api.Controllers;
 
 [ApiController]
-[Route("home")]
+[Route("")]
 public class HomeController : ControllerBase
 {
     [HttpGet]

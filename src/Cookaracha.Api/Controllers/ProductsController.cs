@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Cookaracha.Api.Controllers;
 
 [ApiController]
-[Route("products")]
+[Route("api/[controller]")]
 public class ProductsController : ControllerBase
 {
     private readonly IProductsService _productsService;
@@ -31,13 +31,12 @@ public class ProductsController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult<Guid>> Post([FromBody] CreateProduct command)
+    public async Task<ActionResult> Post([FromBody] CreateProduct command)
     {
-        var result = await _productsService.CreateProductAsync(command with { Id = Guid.NewGuid() });
+        command = command with { Id = Guid.NewGuid() };
+        await _productsService.CreateProductAsync(command);
 
-        return result is not null
-            ? CreatedAtAction(nameof(Post), result)
-            : BadRequest();
+        return CreatedAtAction(nameof(Get), new { command.Id }, null);
     }
 
     [HttpPut("{id:guid}")]

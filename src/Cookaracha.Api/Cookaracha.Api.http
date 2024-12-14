@@ -1,24 +1,24 @@
-@Cookaracha.Api_HostAddress = https://localhost:1337
+@ApiUrl = https://localhost:1337
 @ProductId = 00000000-0000-0000-0000-000000000001
 
 ### Get application name
 
-GET {{Cookaracha.Api_HostAddress}}/home
+GET {{ApiUrl}}
 Accept: application/json
 
 ### Get all products
 
-GET {{Cookaracha.Api_HostAddress}}/products
+GET {{ApiUrl}}/api/products
 Accept: application/json
 
 ### Get product by id
 
-GET {{Cookaracha.Api_HostAddress}}/products/{{ProductId}}
+GET {{ApiUrl}}/api/products/{{ProductId}}
 Accept: application/json
 
 ### Create new product
 
-POST {{Cookaracha.Api_HostAddress}}/products
+POST {{ApiUrl}}/api/products
 Content-Type: application/json
 {
     "name": "Pineapple"
@@ -26,7 +26,7 @@ Content-Type: application/json
 
 ### Update product
 
-PUT {{Cookaracha.Api_HostAddress}}/products/{{ProductId}}
+PUT {{ApiUrl}}/api/products/{{ProductId}}
 Content-Type: application/json
 {
     "name": "Peach"
@@ -34,5 +34,5 @@ Content-Type: application/json
 
 ### Delete product
 
-DELETE {{Cookaracha.Api_HostAddress}}/products/{{ProductId}}
+DELETE {{ApiUrl}}/api/products/{{ProductId}}
 Accept: application/json
