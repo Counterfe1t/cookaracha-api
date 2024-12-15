@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Cookaracha.Infrastructure.Configuration;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 
 namespace Cookaracha.Api.Controllers;
 
@@ -6,6 +8,13 @@ namespace Cookaracha.Api.Controllers;
 [Route("")]
 public class HomeController : ControllerBase
 {
+    private readonly string _appName;
+
+    public HomeController(IOptions<AppOptions> options)
+    {
+        _appName = options.Value.Name;
+    }
+
     [HttpGet]
-    public ActionResult<string> Get() => Ok("Cookaracha.Api");
+    public ActionResult<string> Get() => Ok(_appName);
 }

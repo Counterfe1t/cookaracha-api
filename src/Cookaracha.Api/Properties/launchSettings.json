@@ -9,22 +9,22 @@
         }
     },
     "profiles": {
-        "Cookaracha.Api": {
+        "Cookaracha.Api (Kestrel)": {
             "commandName": "Project",
             "launchBrowser": false,
-            "launchUrl": "home",
+            "launchUrl": "",
             "environmentVariables": {
-                "ASPNETCORE_ENVIRONMENT": "Development"
+                "ASPNETCORE_ENVIRONMENT": "dev"
             },
             "dotnetRunMessages": true,
             "applicationUrl": "https://localhost:1337;http://localhost:2137"
         },
-        "IIS Express": {
+        "Cookaracha.Api (IIS)": {
             "commandName": "IISExpress",
             "launchBrowser": true,
-            "launchUrl": "home",
+            "launchUrl": "",
             "environmentVariables": {
-                "ASPNETCORE_ENVIRONMENT": "Development"
+                "ASPNETCORE_ENVIRONMENT": "dev"
             }
         }
     }
