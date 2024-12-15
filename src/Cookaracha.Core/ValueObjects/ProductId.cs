@@ -17,8 +17,8 @@ public sealed record ProductId
     public static ProductId Create()
         => new(Guid.NewGuid());
 
-    public static implicit operator Guid(ProductId productId)
-        => productId.Value;
+    public static implicit operator Guid(ProductId id)
+        => id.Value;
 
     public static implicit operator ProductId(Guid value)
         => new(value);
