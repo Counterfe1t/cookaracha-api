@@ -1,4 +1,4 @@
-﻿namespace Cookaracha.Application.Dtos;
+﻿namespace Cookaracha.Application.DTO;
 
 public class ProductDto
 {

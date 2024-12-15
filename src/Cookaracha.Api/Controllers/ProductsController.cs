@@ -1,5 +1,5 @@
 ﻿using Cookaracha.Application.Commands;
-using Cookaracha.Application.Dtos;
+using Cookaracha.Application.DTO;
 using Cookaracha.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 

@@ -1,5 +1,5 @@
 ﻿using Cookaracha.Application.Commands;
-using Cookaracha.Application.Dtos;
+using Cookaracha.Application.DTO;
 
 namespace Cookaracha.Application.Interfaces;
 
