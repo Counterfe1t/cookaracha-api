@@ -1,3 +1,5 @@
-﻿namespace Cookaracha.Application.Commands;
+﻿using Cookaracha.Application.Abstractions;
 
-public sealed record CreateProduct(Guid Id, string Name);
+namespace Cookaracha.Application.Commands;
+
+public sealed record CreateProduct(Guid Id, string Name) : ICommand;

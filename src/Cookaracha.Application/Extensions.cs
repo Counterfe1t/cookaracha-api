@@ -1,5 +1,4 @@
-﻿using Cookaracha.Application.Interfaces;
-using Cookaracha.Application.Services;
+﻿using Cookaracha.Application.Abstractions;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Cookaracha.Application;
@@ -7,6 +6,17 @@ namespace Cookaracha.Application;
 public static class Extensions
 {
     public static IServiceCollection AddApplication(this IServiceCollection services)
-        => services
-            .AddScoped<IProductsService, ProductsService>();
+    {
+        services.Scan(s => s.FromAssemblies(typeof(ICommandHandler<>).Assembly)
+            .AddClasses(c => c.AssignableTo(typeof(ICommandHandler<>)))
+            .AsImplementedInterfaces()
+            .WithScopedLifetime());
+
+        services.Scan(s => s.FromAssemblies(typeof(IQueryHandler<,>).Assembly)
+            .AddClasses(c => c.AssignableTo(typeof(IQueryHandler<,>)))
+            .AsImplementedInterfaces()
+            .WithScopedLifetime());
+
+        return services;
+    }
 }

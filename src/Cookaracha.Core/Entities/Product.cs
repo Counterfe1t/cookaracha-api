@@ -12,4 +12,9 @@ public sealed class Product
         Id = id;
         Name = name;
     }
+
+    public void ChangeProductName(ProductName name)
+    {
+        Name = name;
+    }
 }

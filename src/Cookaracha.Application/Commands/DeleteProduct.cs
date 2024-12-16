@@ -1,3 +1,5 @@
-﻿namespace Cookaracha.Application.Commands;
+﻿using Cookaracha.Application.Abstractions;
 
-public sealed record DeleteProduct(Guid Id);
+namespace Cookaracha.Application.Commands;
+
+public sealed record DeleteProduct(Guid Id) : ICommand;

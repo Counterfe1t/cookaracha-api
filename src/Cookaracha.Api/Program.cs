@@ -4,9 +4,9 @@ using Cookaracha.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services
-    .AddInfrastructure(builder.Configuration)
-    .AddCore()
     .AddApplication()
+    .AddCore()
+    .AddInfrastructure(builder.Configuration)
     .AddControllers();
 
 var app = builder.Build();
