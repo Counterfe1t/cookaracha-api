@@ -24,11 +24,11 @@ public class ProductsController : ControllerBase
         ICommandHandler<UpdateProduct> updateProductHandler,
         ICommandHandler<DeleteProduct> deleteProductHandler)
     {
+        _getProductsHandler = getProductsHandler;
+        _getProductHandler = getProductHandler;
         _createProductHandler = createProductHandler;
         _updateProductHandler = updateProductHandler;
         _deleteProductHandler = deleteProductHandler;
-        _getProductsHandler = getProductsHandler;
-        _getProductHandler = getProductHandler;
     }
 
     [HttpGet]
