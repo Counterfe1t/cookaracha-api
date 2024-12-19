@@ -12,5 +12,5 @@ builder.Services
 
 var app = builder.Build();
 app.UseInfrastructure();
-app.UseHome();
+app.MapHomeEndpoint();
 app.Run();
