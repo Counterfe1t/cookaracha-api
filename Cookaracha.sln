@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cookaracha.Application", "s
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cookaracha.Infrastructure", "src\Cookaracha.Infrastructure\Cookaracha.Infrastructure.csproj", "{F5179EE2-AF73-4643-A120-78C3179027B4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{51EF0F66-B462-4B69-B6E0-2C30EB7F0CED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cookaracha.UnitTests", "tests\Cookaracha.UnitTests\Cookaracha.UnitTests.csproj", "{8BF4F78A-B6BE-4A2A-9529-94C5C6E9DA2B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +39,10 @@ Global
 		{F5179EE2-AF73-4643-A120-78C3179027B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5179EE2-AF73-4643-A120-78C3179027B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5179EE2-AF73-4643-A120-78C3179027B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BF4F78A-B6BE-4A2A-9529-94C5C6E9DA2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BF4F78A-B6BE-4A2A-9529-94C5C6E9DA2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BF4F78A-B6BE-4A2A-9529-94C5C6E9DA2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BF4F78A-B6BE-4A2A-9529-94C5C6E9DA2B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -44,5 +52,6 @@ Global
 		{2BB9261E-AC78-4B0A-B9B6-8FE0D668C5BC} = {A68FB9DA-2159-403B-8994-D8C67C7F2F1D}
 		{FEEF81FA-96B8-453A-BA7A-4FF81A744E0D} = {A68FB9DA-2159-403B-8994-D8C67C7F2F1D}
 		{F5179EE2-AF73-4643-A120-78C3179027B4} = {A68FB9DA-2159-403B-8994-D8C67C7F2F1D}
+		{8BF4F78A-B6BE-4A2A-9529-94C5C6E9DA2B} = {51EF0F66-B462-4B69-B6E0-2C30EB7F0CED}
 	EndGlobalSection
 EndGlobal
