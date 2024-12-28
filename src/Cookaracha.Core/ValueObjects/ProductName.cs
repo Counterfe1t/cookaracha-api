@@ -1,4 +1,5 @@
 ﻿using Cookaracha.Core.Exceptions;
+using System.Text.RegularExpressions;
 
 namespace Cookaracha.Core.ValueObjects;
 
@@ -17,7 +18,7 @@ public sealed record ProductName
         if (value.Length < MinLength || value.Length > MaxLength)
             throw new InvalidProductNameException(value);
 
-        Value = value;
+        Value = Sanitize(value);
     }
 
     public static implicit operator string(ProductName name)
@@ -25,4 +26,7 @@ public sealed record ProductName
 
     public static implicit operator ProductName(string value)
         => new(value);
+
+    private static string Sanitize(string value)
+        => Regex.Replace(value.ToLower().Trim(), @"\s+", " ");
 }
