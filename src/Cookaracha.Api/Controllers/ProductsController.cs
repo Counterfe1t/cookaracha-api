@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Cookaracha.Api.Controllers;
 
+// TODO: Add swagger documentation
 [ApiController]
 [Route("api/[controller]")]
 public class ProductsController : ControllerBase

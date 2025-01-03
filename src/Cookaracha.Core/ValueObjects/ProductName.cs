@@ -27,6 +27,7 @@ public sealed record ProductName
     public static implicit operator ProductName(string value)
         => new(value);
 
+    // TODO: Rename and move this method to a core utility class
     private static string Sanitize(string value)
         => Regex.Replace(value.ToLower().Trim(), @"\s+", " ");
 }

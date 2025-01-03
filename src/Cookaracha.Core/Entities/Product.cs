@@ -2,6 +2,7 @@
 
 namespace Cookaracha.Core.Entities;
 
+// TODO: Create base entity class
 public sealed class Product
 {
     public ProductId Id { get; private set; }
