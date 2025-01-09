@@ -1,12 +1,20 @@
 ﻿using Cookaracha.Core.Exceptions;
 using Humanizer;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
 
 namespace Cookaracha.Infrastructure.Middleware;
 
 internal sealed class ExceptionMiddleware : IMiddleware
 {
     private record Error(string Code, string Message);
+
+    private ILogger<ExceptionMiddleware> _logger;
+
+    public ExceptionMiddleware(ILogger<ExceptionMiddleware> logger)
+    {
+        _logger = logger;
+    }
 
     public async Task InvokeAsync(HttpContext context, RequestDelegate next)
     {
@@ -16,8 +24,7 @@ internal sealed class ExceptionMiddleware : IMiddleware
         }
         catch (Exception exception)
         {
-            // TODO: Add proper error logging with serilog
-            Console.WriteLine(exception.Message);
+            _logger.LogError("An exception has been thrown: {Message}", exception.Message);
             await HandleExceptionAsync(exception, context);
         }
     }

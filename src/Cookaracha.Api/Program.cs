@@ -2,8 +2,10 @@ using Cookaracha.Api;
 using Cookaracha.Application;
 using Cookaracha.Core;
 using Cookaracha.Infrastructure;
+using Cookaracha.Infrastructure.Logging;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.UseSerilog();
 builder.Services
     .AddApplication()
     .AddCore()
