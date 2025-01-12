@@ -2,11 +2,11 @@
 
 namespace Cookaracha.Core.ValueObjects;
 
-public sealed record ProductId
+public sealed record GroceryListId
 {
     public Guid Value { get; }
 
-    public ProductId(Guid value)
+    public GroceryListId(Guid value)
     {
         if (value == Guid.Empty)
             throw new InvalidEntityIdException(value);
@@ -14,9 +14,9 @@ public sealed record ProductId
         Value = value;
     }
 
-    public static implicit operator Guid(ProductId id)
+    public static implicit operator Guid(GroceryListId id)
         => id.Value;
 
-    public static implicit operator ProductId(Guid value)
+    public static implicit operator GroceryListId(Guid value)
         => new(value);
 }
