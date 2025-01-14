@@ -3,7 +3,7 @@ using Cookaracha.Core.Repositories;
 
 namespace Cookaracha.Infrastructure.DAL.Repositories;
 
-internal class InMemoryProductsRepository : IProductsRepository
+internal sealed class InMemoryProductsRepository : IProductsRepository
 {
     private readonly List<Product> _products =
     [
