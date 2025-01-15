@@ -18,6 +18,7 @@ public static class Extensions
         services.Configure<AppOptions>(configuration.GetSection(AppSectionName));
         services.AddSingleton<ExceptionMiddleware>();
         services.AddSingleton<IProductsRepository, InMemoryProductsRepository>();
+        services.AddSingleton<IGroceryListsRepository, InMemoryGroceryListsRepository>();
         services.AddCustomLogging();
 
         return services;
