@@ -1,5 +1,6 @@
 @ApiUrl = https://localhost:1337
 @ProductId = 00000000-0000-0000-0000-000000000001
+@GroceryListId = 00000000-0000-0000-0000-000000000001
 
 ### Get application name
 
@@ -35,4 +36,9 @@ Content-Type: application/json
 ### Delete product
 
 DELETE {{ApiUrl}}/api/products/{{ProductId}}
+Accept: application/json
+
+### Get grocery list by id
+
+GET {{ApiUrl}}/api/grocery-lists/{{GroceryListId}}
 Accept: application/json
