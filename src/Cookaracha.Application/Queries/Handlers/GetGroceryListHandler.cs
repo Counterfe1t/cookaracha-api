@@ -1,5 +1,6 @@
 ﻿using Cookaracha.Application.Abstractions;
 using Cookaracha.Application.DTO;
+using Cookaracha.Application.Exceptions;
 using Cookaracha.Core.Repositories;
 
 namespace Cookaracha.Application.Queries.Handlers;
@@ -15,11 +16,12 @@ public sealed class GetGroceryListHandler : IQueryHandler<GetGroceryList, Grocer
 
     public async Task<GroceryListDto> HandleAsync(GetGroceryList command)
     {
-        var result = await _groceryListsRepository.GetAsync(command.GroceryListId) ?? throw new Exception();
+        var groceryList = await _groceryListsRepository.GetAsync(command.GroceryListId)
+            ?? throw new GroceryListNotFoundException(command.GroceryListId);
 
-        return new GroceryListDto
+        return new()
         {
-            Id = result.Id
+            Id = groceryList.Id
         };
     }
 }

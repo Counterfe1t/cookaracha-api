@@ -17,10 +17,10 @@ internal sealed class GetProductsHandler : IQueryHandler<GetProducts, IEnumerabl
     {
         var products = await _productsRepository.GetAllAsync();
         
-        return products.Select(x => new ProductDto
+        return products.Select(p => new ProductDto
         {
-            Id = x.Id,
-            Name = x.Name,
+            Id = p.Id,
+            Name = p.Name,
         });
     }
 }

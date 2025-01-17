@@ -18,5 +18,5 @@ internal sealed class InMemoryGroceryListsRepository : IGroceryListsRepository
         => await Task.FromResult(_groceryLists);
 
     public async Task<GroceryList?> GetAsync(Guid id)
-        => await Task.FromResult(_groceryLists.FirstOrDefault(x => x.Id.Value == id));
+        => await Task.FromResult(_groceryLists.FirstOrDefault(gl => gl.Id.Value == id));
 }
