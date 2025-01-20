@@ -42,3 +42,8 @@ Accept: application/json
 
 GET {{ApiUrl}}/api/grocery-lists/{{GroceryListId}}
 Accept: application/json
+
+### Get all grocery lists
+
+GET {{ApiUrl}}/api/grocery-lists
+Accept: application/json
