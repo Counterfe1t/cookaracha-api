@@ -6,4 +6,5 @@ public interface IGroceryListsRepository
 {
     Task<IEnumerable<GroceryList>> GetAllAsync();
     Task<GroceryList?> GetAsync(Guid id);
+    Task AddAsync(GroceryList groceryList);
 }
