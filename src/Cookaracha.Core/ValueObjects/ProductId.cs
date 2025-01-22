@@ -19,4 +19,16 @@ public sealed record ProductId
 
     public static implicit operator ProductId(Guid value)
         => new(value);
+
+    public static bool operator ==(ProductId id, Guid value)
+        => id.Value == value;
+
+    public static bool operator !=(ProductId id, Guid value)
+        => id.Value != value;
+
+    public static bool operator ==(Guid value, ProductId id)
+        => id.Value == value;
+
+    public static bool operator !=(Guid value, ProductId id)
+        => id.Value != value;
 }

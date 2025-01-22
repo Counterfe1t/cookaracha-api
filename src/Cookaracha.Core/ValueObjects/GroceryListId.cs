@@ -19,4 +19,16 @@ public sealed record GroceryListId
 
     public static implicit operator GroceryListId(Guid value)
         => new(value);
+
+    public static bool operator ==(GroceryListId id, Guid value)
+        => id.Value == value;
+
+    public static bool operator !=(GroceryListId id, Guid value)
+        => id.Value != value;
+
+    public static bool operator ==(Guid value, GroceryListId id)
+        => id.Value == value;
+
+    public static bool operator !=(Guid value, GroceryListId id)
+        => id.Value != value;
 }
