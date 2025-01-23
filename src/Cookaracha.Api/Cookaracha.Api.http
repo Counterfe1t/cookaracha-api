@@ -38,12 +38,19 @@ Content-Type: application/json
 DELETE {{ApiUrl}}/api/products/{{ProductId}}
 Accept: application/json
 
+### Get all grocery lists
+
+GET {{ApiUrl}}/api/grocery-lists
+Accept: application/json
+
 ### Get grocery list by id
 
 GET {{ApiUrl}}/api/grocery-lists/{{GroceryListId}}
 Accept: application/json
 
-### Get all grocery lists
+### Create new grocery list
 
-GET {{ApiUrl}}/api/grocery-lists
-Accept: application/json
+POST {{ApiUrl}}/api/grocery-lists
+Content-Type: application/json
+{
+}
