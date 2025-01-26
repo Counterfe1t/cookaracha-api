@@ -26,4 +26,18 @@ internal sealed class InMemoryGroceryListsRepository : IGroceryListsRepository
 
         return Task.CompletedTask;
     }
+
+    public Task UpdateAsync(GroceryList groceryList)
+    {
+        // Update grocery list
+
+        return Task.CompletedTask;
+    }
+
+    public Task DeleteAsync(GroceryList groceryList)
+    {
+        _groceryLists.Remove(groceryList);
+
+        return Task.CompletedTask;
+    }
 }

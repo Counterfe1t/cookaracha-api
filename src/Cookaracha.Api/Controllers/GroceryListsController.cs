@@ -14,15 +14,21 @@ public class GroceryListsController : ControllerBase
     private readonly IQueryHandler<GetGroceryList, GroceryListDto> _getGroceryListHandler;
 
     private readonly ICommandHandler<CreateGroceryList> _createGroceryListHandler;
+    private readonly ICommandHandler<UpdateGroceryList> _updateGroceryListHandler;
+    private readonly ICommandHandler<DeleteGroceryList> _deleteGroceryListHandler;
 
     public GroceryListsController(
         IQueryHandler<GetGroceryLists, IEnumerable<GroceryListDto>> getGroceryListsHandler,
         IQueryHandler<GetGroceryList, GroceryListDto> getGroceryListHandler,
-        ICommandHandler<CreateGroceryList> createGroceryListHandler)
+        ICommandHandler<CreateGroceryList> createGroceryListHandler,
+        ICommandHandler<UpdateGroceryList> updateGroceryListHandler,
+        ICommandHandler<DeleteGroceryList> deleteGroceryListHandler)
     {
         _getGroceryListsHandler = getGroceryListsHandler;
         _getGroceryListHandler = getGroceryListHandler;
         _createGroceryListHandler = createGroceryListHandler;
+        _updateGroceryListHandler = updateGroceryListHandler;
+        _deleteGroceryListHandler = deleteGroceryListHandler;
     }
 
     [HttpGet]
@@ -40,5 +46,19 @@ public class GroceryListsController : ControllerBase
         await _createGroceryListHandler.HandleAsync(command);
 
         return CreatedAtAction(nameof(Get), new { command.Id }, null);
+    }
+
+    [HttpPut("{id:guid}")]
+    public async Task<ActionResult> Put([FromRoute] Guid id, [FromBody] UpdateGroceryList command)
+    {
+        await _updateGroceryListHandler.HandleAsync(command with { Id = id });
+        return NoContent();
+    }
+
+    [HttpDelete("{id:guid}")]
+    public async Task<ActionResult> Delete([FromRoute] Guid id)
+    {
+        await _deleteGroceryListHandler.HandleAsync(new DeleteGroceryList(id));
+        return NoContent();
     }
 }

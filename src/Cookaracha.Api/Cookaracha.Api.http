@@ -54,3 +54,15 @@ POST {{ApiUrl}}/api/grocery-lists
 Content-Type: application/json
 {
 }
+
+### Update grocery list
+
+PUT {{ApiUrl}}/api/grocery-lists/{{GroceryListId}}
+Content-Type: application/json
+{
+}
+
+### Delete grocery list
+
+DELETE {{ApiUrl}}/api/grocery-lists/{{GroceryListId}}
+Accept: application/json
