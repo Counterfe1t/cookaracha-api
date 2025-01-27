@@ -7,11 +7,11 @@ internal sealed class InMemoryProductsRepository : IProductsRepository
 {
     private readonly List<Product> _products =
     [
-        new(Guid.Parse("00000000-0000-0000-0000-000000000001"), "Apple"),
-        new(Guid.Parse("00000000-0000-0000-0000-000000000002"), "Orange"),
-        new(Guid.Parse("00000000-0000-0000-0000-000000000003"), "Pear"),
-        new(Guid.Parse("00000000-0000-0000-0000-000000000004"), "Banana"),
-        new(Guid.Parse("00000000-0000-0000-0000-000000000005"), "Lemon"),
+        new(Guid.Parse("00000000-0000-0000-0000-000000000001"), "apple"),
+        new(Guid.Parse("00000000-0000-0000-0000-000000000002"), "orange"),
+        new(Guid.Parse("00000000-0000-0000-0000-000000000003"), "pear"),
+        new(Guid.Parse("00000000-0000-0000-0000-000000000004"), "banana"),
+        new(Guid.Parse("00000000-0000-0000-0000-000000000005"), "lemon"),
     ];
 
     public async Task<IEnumerable<Product>> GetAllAsync()

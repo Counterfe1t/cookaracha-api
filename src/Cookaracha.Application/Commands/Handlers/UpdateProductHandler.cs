@@ -15,7 +15,9 @@ internal sealed class UpdateProductHandler : ICommandHandler<UpdateProduct>
 
     public async Task HandleAsync(UpdateProduct command)
     {
-        var product = await _productsRepository.GetAsync(command.Id) ?? throw new ProductNotFoundException(command.Id);
+        var product = await _productsRepository.GetAsync(command.Id)
+            ?? throw new ProductNotFoundException(command.Id);
+
         product.ChangeProductName(command.Name);
 
         await _productsRepository.UpdateAsync(product);

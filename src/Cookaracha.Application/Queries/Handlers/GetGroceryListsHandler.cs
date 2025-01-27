@@ -20,6 +20,7 @@ public sealed class GetGroceryListsHandler : IQueryHandler<GetGroceryLists, IEnu
         return groceryLists.Select(gl => new GroceryListDto
         {
             Id = gl.Id,
+            Name = gl.Name,
         });
     }
 }

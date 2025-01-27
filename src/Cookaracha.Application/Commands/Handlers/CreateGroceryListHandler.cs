@@ -13,5 +13,5 @@ public sealed class CreateGroceryListHandler : ICommandHandler<CreateGroceryList
     }
 
     public async Task HandleAsync(CreateGroceryList command)
-        => await _groceryListsRepository.AddAsync(new(command.Id));
+        => await _groceryListsRepository.AddAsync(new(command.Id, command.Name));
 }

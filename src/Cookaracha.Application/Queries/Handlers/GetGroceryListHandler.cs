@@ -21,7 +21,8 @@ public sealed class GetGroceryListHandler : IQueryHandler<GetGroceryList, Grocer
 
         return new()
         {
-            Id = groceryList.Id
+            Id = groceryList.Id,
+            Name = groceryList.Name,
         };
     }
 }

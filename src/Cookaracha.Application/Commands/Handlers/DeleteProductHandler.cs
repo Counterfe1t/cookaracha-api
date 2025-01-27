@@ -15,7 +15,8 @@ internal class DeleteProductHandler : ICommandHandler<DeleteProduct>
 
     public async Task HandleAsync(DeleteProduct command)
     {
-        var product = await _productsRepository.GetAsync(command.Id) ?? throw new ProductNotFoundException(command.Id);
+        var product = await _productsRepository.GetAsync(command.Id)
+            ?? throw new ProductNotFoundException(command.Id);
 
         await _productsRepository.DeleteAsync(product);
     }

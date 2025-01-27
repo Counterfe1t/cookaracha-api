@@ -2,4 +2,4 @@
 
 namespace Cookaracha.Application.Commands;
 
-public sealed record CreateGroceryList(Guid Id) : ICommand;
+public sealed record CreateGroceryList(Guid Id, string Name) : ICommand;

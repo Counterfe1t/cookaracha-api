@@ -15,7 +15,8 @@ public sealed class UpdateGroceryListHandler : ICommandHandler<UpdateGroceryList
 
     public async Task HandleAsync(UpdateGroceryList command)
     {
-        var groceryList = await _groceryListsRepository.GetAsync(command.Id) ?? throw new GroceryListNotFoundException(command.Id);
+        var groceryList = await _groceryListsRepository.GetAsync(command.Id)
+            ?? throw new GroceryListNotFoundException(command.Id);
 
         await _groceryListsRepository.UpdateAsync(groceryList);
     }

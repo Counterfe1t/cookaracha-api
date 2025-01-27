@@ -53,6 +53,7 @@ Accept: application/json
 POST {{ApiUrl}}/api/grocery-lists
 Content-Type: application/json
 {
+    "name": "My grocery list"
 }
 
 ### Update grocery list
