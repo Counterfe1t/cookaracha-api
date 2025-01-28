@@ -14,4 +14,9 @@ public sealed class GroceryList
         Id = id;
         Name = name;
     }
+
+    public void ChangeGroceryListName(GroceryListName name)
+    {
+        Name = name;
+    }
 }

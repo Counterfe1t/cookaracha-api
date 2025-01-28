@@ -18,6 +18,8 @@ public sealed class UpdateGroceryListHandler : ICommandHandler<UpdateGroceryList
         var groceryList = await _groceryListsRepository.GetAsync(command.Id)
             ?? throw new GroceryListNotFoundException(command.Id);
 
+        groceryList.ChangeGroceryListName(command.Name);
+
         await _groceryListsRepository.UpdateAsync(groceryList);
     }
 }

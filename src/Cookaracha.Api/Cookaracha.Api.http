@@ -61,6 +61,7 @@ Content-Type: application/json
 PUT {{ApiUrl}}/api/grocery-lists/{{GroceryListId}}
 Content-Type: application/json
 {
+    "name": "My grocery list"
 }
 
 ### Delete grocery list
