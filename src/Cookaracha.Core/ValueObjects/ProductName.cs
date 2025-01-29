@@ -12,13 +12,9 @@ public sealed record ProductName
 
     public ProductName(string value)
     {
-        if (string.IsNullOrWhiteSpace(value))
-            throw new InvalidProductNameException(value);
-
-        if (value.Length < MinLength || value.Length > MaxLength)
-            throw new InvalidProductNameException(value);
-
-        Value = Sanitize(value);
+        Value = IsValid(value)
+            ? Sanitize(value)
+            : throw new InvalidProductNameException(value);
     }
 
     public static implicit operator string(ProductName name)
@@ -27,7 +23,31 @@ public sealed record ProductName
     public static implicit operator ProductName(string value)
         => new(value);
 
-    // TODO: Rename and move this method to a core utility class
+    public static bool operator ==(ProductName name, string value)
+        => name.Value == value;
+
+    public static bool operator !=(ProductName name, string value)
+        => name.Value != value;
+
+    public static bool operator ==(string value, ProductName name)
+        => name.Value == value;
+
+    public static bool operator !=(string value, ProductName name)
+        => name.Value != value;
+
+    // TODO: Improve and move validation to a core utility class
+    private static bool IsValid(string value)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+            return false;
+
+        if (value.Length < MinLength || value.Length > MaxLength)
+            return false;
+
+        return true;
+    }
+
+    // TODO: Rename and move sanitization to a core utility class
     private static string Sanitize(string value)
         => Regex.Replace(value.ToLower().Trim(), @"\s+", " ");
 }
