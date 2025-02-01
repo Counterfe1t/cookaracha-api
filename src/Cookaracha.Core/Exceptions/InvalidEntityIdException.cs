@@ -1,4 +1,6 @@
-﻿namespace Cookaracha.Core.Exceptions;
+﻿using System.Net;
+
+namespace Cookaracha.Core.Exceptions;
 
 internal sealed class InvalidEntityIdException : CustomException
 {
@@ -6,6 +8,7 @@ internal sealed class InvalidEntityIdException : CustomException
 
     public InvalidEntityIdException(Guid entityId) : base($"Entity ID: '{entityId}' is invalid.")
     {
+        StatusCode = (int)HttpStatusCode.BadRequest;
         EntityId = entityId;
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace Cookaracha.Core.Exceptions;
+﻿using System.Net;
+
+namespace Cookaracha.Core.Exceptions;
 
 internal sealed class InvalidProductNameException : CustomException
 {
@@ -6,6 +8,7 @@ internal sealed class InvalidProductNameException : CustomException
 
     public InvalidProductNameException(string productName) : base($"Product name: '{productName}' is invalid.")
     {
+        StatusCode = (int)HttpStatusCode.BadRequest;
         ProductName = productName;
     }
 }

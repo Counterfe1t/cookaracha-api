@@ -7,6 +7,8 @@ namespace Cookaracha.Infrastructure.Middleware;
 
 internal sealed class ExceptionMiddleware : IMiddleware
 {
+    private const string ErrorMessageTemplate = "An exception has been thrown: {Message}";
+
     private record Error(string Code, string Message);
 
     private ILogger<ExceptionMiddleware> _logger;
@@ -22,21 +24,24 @@ internal sealed class ExceptionMiddleware : IMiddleware
         {
             await next(context);
         }
+        catch (CustomException exception)
+        {
+            _logger.LogError(ErrorMessageTemplate, exception.Message);
+            await HandleExceptionAsync(exception, exception.StatusCode, context);
+        }
         catch (Exception exception)
         {
-            _logger.LogError("An exception has been thrown: {Message}", exception.Message);
-            await HandleExceptionAsync(exception, context);
+            _logger.LogError(ErrorMessageTemplate, exception.Message);
+            await HandleExceptionAsync(exception, StatusCodes.Status500InternalServerError, context);
         }
     }
 
-    private async Task HandleExceptionAsync(Exception exception, HttpContext context)
+    private static async Task HandleExceptionAsync(Exception exception, int statusCode, HttpContext context)
     {
-        var (statusCode, error) = exception switch
+        var error = exception switch
         {
-            CustomException => (
-                StatusCodes.Status400BadRequest,
-                new Error(exception.GetType().Name.Underscore().Replace("_exception", string.Empty), exception.Message)),
-            _ => (StatusCodes.Status500InternalServerError, new Error("error", "An unexpected error occurred on the server."))
+            CustomException => new Error(exception.GetType().Name.Underscore().Replace("_exception", string.Empty), exception.Message),
+            _ => new Error("error", "An unexpected error occurred on the server.")
         };
 
         context.Response.StatusCode = statusCode;

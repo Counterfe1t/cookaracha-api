@@ -1,4 +1,6 @@
-﻿namespace Cookaracha.Core.Exceptions;
+﻿using System.Net;
+
+namespace Cookaracha.Core.Exceptions;
 
 internal sealed class InvalidGroceryListNameException : CustomException
 {
@@ -6,6 +8,7 @@ internal sealed class InvalidGroceryListNameException : CustomException
 
     public InvalidGroceryListNameException(string groceryListName) : base($"Grocery list name: '{groceryListName}' is invalid.")
     {
+        StatusCode = (int)HttpStatusCode.BadRequest;
         GroceryListName = groceryListName;
     }
 }
