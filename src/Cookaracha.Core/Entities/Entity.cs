@@ -1,10 +1,12 @@
-﻿namespace Cookaracha.Core.Entities;
+﻿using Cookaracha.Core.ValueObjects;
+
+namespace Cookaracha.Core.Entities;
 
 public abstract class Entity
 {
-    public DateTime CreatedAt { get; private set; }
+    public Date CreatedAt { get; private set; }
 
-    protected Entity(DateTime createdAt)
+    protected Entity(Date createdAt)
     {
         CreatedAt = createdAt;
     }
