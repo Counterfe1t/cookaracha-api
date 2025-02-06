@@ -2,15 +2,15 @@
 
 namespace Cookaracha.Core.Entities;
 
-// TODO: Create base entity class
-public sealed class Product
+public sealed class Product : Entity
 {
     public ProductId Id { get; private set; }
     public ProductName Name { get; private set; }
 
     public Product(
         ProductId id,
-        ProductName name)
+        ProductName name,
+        Date createdAt) : base(createdAt)
     {
         Id = id;
         Name = name;
