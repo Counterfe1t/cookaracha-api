@@ -14,7 +14,7 @@ public class ProductTests
     public void ChangeProductName_ProductNameIsInvalid_ShouldThrowException(string invalidName)
     {
         // arrange
-        var product = new Product(Guid.NewGuid(), "dummy");
+        var product = new Product(Guid.NewGuid(), "dummy", DateTimeOffset.UtcNow);
 
         // act
         var exception = Record.Exception(() => product.ChangeProductName(invalidName));
@@ -32,7 +32,7 @@ public class ProductTests
     public void ChangeProductName_ProductNameIsValid_ShouldSanitizeAndChangeProductName(string newValue, string expectedValue)
     {
         // arrange
-        var product = new Product(Guid.NewGuid(), "dummy");
+        var product = new Product(Guid.NewGuid(), "dummy", DateTimeOffset.UtcNow);
 
         // act
         product.ChangeProductName(newValue);

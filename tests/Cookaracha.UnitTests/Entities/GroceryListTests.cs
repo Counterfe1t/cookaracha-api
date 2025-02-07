@@ -25,10 +25,10 @@ public class GroceryListTests
     }
 
     [Theory]
-    [InlineData("DUMMY", "dummy")]
-    [InlineData("Dummy", "dummy")]
+    [InlineData("DUMMY", "DUMMY")]
+    [InlineData("Dummy", "Dummy")]
     [InlineData(" dummy ", "dummy")]
-    [InlineData(" Dummy  Grocery List ", "dummy grocery list")]
+    [InlineData(" Dummy  Grocery List ", "Dummy Grocery List")]
     public void ChangeGroceryListName_GroceryListNameIsValid_ShouldSanitizeAndChangeGroceryListName(string newValue, string expectedValue)
     {
         // arrange
