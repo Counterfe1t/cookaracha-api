@@ -7,11 +7,11 @@ internal sealed class InMemoryGroceryListsRepository : IGroceryListsRepository
 {
     private readonly List<GroceryList> _groceryLists =
     [
-        new(Guid.Parse("00000000-0000-0000-0000-000000000001"), "grocery_list_1"),
-        new(Guid.Parse("00000000-0000-0000-0000-000000000002"), "grocery_list_2"),
-        new(Guid.Parse("00000000-0000-0000-0000-000000000003"), "grocery_list_3"),
-        new(Guid.Parse("00000000-0000-0000-0000-000000000004"), "grocery_list_4"),
-        new(Guid.Parse("00000000-0000-0000-0000-000000000005"), "grocery_list_5"),
+        new(Guid.Parse("00000000-0000-0000-0000-000000000001"), "grocery_list_1", DateTimeOffset.UtcNow),
+        new(Guid.Parse("00000000-0000-0000-0000-000000000002"), "grocery_list_2", DateTimeOffset.UtcNow),
+        new(Guid.Parse("00000000-0000-0000-0000-000000000003"), "grocery_list_3", DateTimeOffset.UtcNow),
+        new(Guid.Parse("00000000-0000-0000-0000-000000000004"), "grocery_list_4", DateTimeOffset.UtcNow),
+        new(Guid.Parse("00000000-0000-0000-0000-000000000005"), "grocery_list_5", DateTimeOffset.UtcNow),
     ];
 
     public async Task<IEnumerable<GroceryList>> GetAllAsync()

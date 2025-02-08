@@ -2,14 +2,15 @@
 
 namespace Cookaracha.Core.Entities;
 
-public sealed class GroceryList
+public sealed class GroceryList : Entity
 {
     public GroceryListId Id { get; private set; }
     public GroceryListName Name { get; private set; }
 
     public GroceryList(
         GroceryListId id,
-        GroceryListName name)
+        GroceryListName name,
+        Date createdAt) : base(createdAt)
     {
         Id = id;
         Name = name;

@@ -14,7 +14,7 @@ public class GroceryListTests
     public void ChangeGroceryListName_GroceryListNameIsInvalid_ShouldThrowException(string invalidName)
     {
         // arrange
-        var groceryList = new GroceryList(Guid.NewGuid(), "dummy");
+        var groceryList = new GroceryList(Guid.NewGuid(), "dummy", DateTimeOffset.UtcNow);
 
         // act
         var exception = Record.Exception(() => groceryList.ChangeGroceryListName(invalidName));
@@ -32,7 +32,7 @@ public class GroceryListTests
     public void ChangeGroceryListName_GroceryListNameIsValid_ShouldSanitizeAndChangeGroceryListName(string newValue, string expectedValue)
     {
         // arrange
-        var groceryList = new GroceryList(Guid.NewGuid(), "dummy");
+        var groceryList = new GroceryList(Guid.NewGuid(), "dummy", DateTimeOffset.UtcNow);
 
         // act
         groceryList.ChangeGroceryListName(newValue);
