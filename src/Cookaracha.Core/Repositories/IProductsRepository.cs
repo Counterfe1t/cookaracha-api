@@ -18,6 +18,13 @@ public interface IProductsRepository
     Task<Product?> GetAsync(Guid id);
 
     /// <summary>
+    /// Get product by name.
+    /// </summary>
+    /// <param name="name">Product name.</param>
+    /// <returns><see cref="Product"/> object.</returns>
+    Task<Product?> GetAsync(string name);
+
+    /// <summary>
     /// Add product.
     /// </summary>
     /// <param name="product"><see cref="Product"/> object.</param>

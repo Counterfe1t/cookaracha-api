@@ -20,6 +20,9 @@ internal sealed class InMemoryProductsRepository : IProductsRepository
     public async Task<Product?> GetAsync(Guid id)
         => await Task.FromResult(_products.FirstOrDefault(p => p.Id == id));
 
+    public async Task<Product?> GetAsync(string name)
+        => await Task.FromResult(_products.FirstOrDefault(p => p.Name == name));
+
     public Task AddAsync(Product product)
     {
         _products.Add(product);
