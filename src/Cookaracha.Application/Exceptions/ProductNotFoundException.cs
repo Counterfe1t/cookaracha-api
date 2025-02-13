@@ -7,7 +7,8 @@ internal sealed class ProductNotFoundException : CustomException
 {
     public Guid ProductId { get; }
 
-    public ProductNotFoundException(Guid productId) : base($"Product with ID: '{productId}' was not found.")
+    public ProductNotFoundException(Guid productId)
+        : base($"Product with ID: '{productId}' was not found.")
     {
         StatusCode = (int)HttpStatusCode.NotFound;
         ProductId = productId;

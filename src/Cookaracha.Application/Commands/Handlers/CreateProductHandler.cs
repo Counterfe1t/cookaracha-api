@@ -1,4 +1,5 @@
 ﻿using Cookaracha.Application.Abstractions;
+using Cookaracha.Application.Exceptions;
 using Cookaracha.Core.Abstractions;
 using Cookaracha.Core.Repositories;
 using Cookaracha.Core.ValueObjects;
@@ -17,5 +18,12 @@ internal sealed class CreateProductHandler : ICommandHandler<CreateProduct>
     }
 
     public async Task HandleAsync(CreateProduct command)
-        => await _productsRepository.AddAsync(new(command.Id, command.Name, new Date(_timeProvider.UtcNow)));
+    {
+        var product = await _productsRepository.GetAsync(command.Name);
+
+        if (product is not null)
+            throw new ProductNameAlreadyInUseException(command.Name);
+
+        await _productsRepository.AddAsync(new(command.Id, command.Name, new Date(_timeProvider.UtcNow)));
+    }
 }
