@@ -1,19 +1,17 @@
 ﻿using Cookaracha.Core.Exceptions;
-using System.Text.RegularExpressions;
+using Cookaracha.Core.Sanitization;
+using Cookaracha.Core.Validation;
 
 namespace Cookaracha.Core.ValueObjects;
 
 public sealed record ProductName
 {
-    private const int MinLength = 2;
-    private const int MaxLength = 50;
-
     public string Value { get; }
 
     public ProductName(string value)
     {
-        Value = IsValid(value)
-            ? Sanitize(value)
+        Value = ProductNameValidator.IsValid(value)
+            ? ProductNameSanitizer.Sanitize(value)
             : throw new InvalidProductNameException(value);
     }
 
@@ -34,20 +32,4 @@ public sealed record ProductName
 
     public static bool operator !=(string value, ProductName name)
         => name.Value != value;
-
-    // TODO: Improve and move validation to a core utility class
-    private static bool IsValid(string value)
-    {
-        if (string.IsNullOrWhiteSpace(value))
-            return false;
-
-        if (value.Length < MinLength || value.Length > MaxLength)
-            return false;
-
-        return true;
-    }
-
-    // TODO: Rename and move sanitization to a core utility class
-    private static string Sanitize(string value)
-        => Regex.Replace(value.ToLower().Trim(), @"\s+", " ");
 }
