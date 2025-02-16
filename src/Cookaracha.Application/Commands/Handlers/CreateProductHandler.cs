@@ -2,6 +2,7 @@
 using Cookaracha.Application.Exceptions;
 using Cookaracha.Core.Abstractions;
 using Cookaracha.Core.Repositories;
+using Cookaracha.Core.Sanitization;
 using Cookaracha.Core.ValueObjects;
 
 namespace Cookaracha.Application.Commands.Handlers;
@@ -19,7 +20,7 @@ internal sealed class CreateProductHandler : ICommandHandler<CreateProduct>
 
     public async Task HandleAsync(CreateProduct command)
     {
-        var product = await _productsRepository.GetAsync(command.Name);
+        var product = await _productsRepository.GetAsync(ProductNameSanitizer.Sanitize(command.Name));
 
         if (product is not null)
             throw new ProductNameAlreadyInUseException(command.Name);
