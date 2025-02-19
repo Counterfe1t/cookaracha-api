@@ -1,6 +1,6 @@
 ﻿using Cookaracha.Core.Exceptions;
+using Cookaracha.Core.Sanitization;
 using Cookaracha.Core.Validation;
-using System.Text.RegularExpressions;
 
 namespace Cookaracha.Core.ValueObjects;
 
@@ -11,7 +11,7 @@ public sealed record GroceryListName
     public GroceryListName(string value)
     {
         Value = GroceryListNameValidator.IsValid(value)
-            ? Sanitize(value)
+            ? GroceryListNameSanitizer.Sanitize(value)
             : throw new InvalidGroceryListNameException(value);
     }
 
@@ -32,8 +32,4 @@ public sealed record GroceryListName
 
     public static bool operator !=(string value, GroceryListName name)
         => name.Value != value;
-
-    // TODO: Rename and move this method to a core utility class
-    private static string Sanitize(string value)
-        => Regex.Replace(value.Trim(), @"\s+", " ");
 }
