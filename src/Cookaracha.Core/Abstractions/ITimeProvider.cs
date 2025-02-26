@@ -3,7 +3,7 @@
 public interface ITimeProvider
 {
     /// <summary>
-    /// Gets the current date and time in Coordinated Universal Time (UTC).
+    /// Get current date and time in Coordinated Universal Time (UTC).
     /// </summary>
     public DateTimeOffset UtcNow { get; }
 }
