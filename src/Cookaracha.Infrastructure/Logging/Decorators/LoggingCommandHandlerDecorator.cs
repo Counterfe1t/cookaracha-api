@@ -24,11 +24,11 @@ internal sealed class LoggingCommandHandlerDecorator<TCommand> : ICommandHandler
         var stopwatch = new Stopwatch();
 
         stopwatch.Start();
-        _logger.LogInformation("Started handling command: {CommandName}", commandName);
+        _logger.LogInformation("started handling command: {CommandName}", commandName);
 
         await _commandHandler.HandleAsync(command);
 
         stopwatch.Stop();
-        _logger.LogInformation("Completed handling command: {CommandName} in {Elapsed}", commandName, stopwatch.Elapsed);
+        _logger.LogInformation("completed handling command: {CommandName} in {Elapsed}", commandName, stopwatch.Elapsed);
     }
 }
