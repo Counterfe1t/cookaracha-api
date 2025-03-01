@@ -6,7 +6,8 @@ internal sealed class InvalidProductNameException : CustomException
 {
     public string ProductName { get; }
 
-    public InvalidProductNameException(string productName) : base($"Product name: '{productName}' is invalid.")
+    public InvalidProductNameException(string productName)
+        : base($"Product name: '{productName}' is invalid.")
     {
         StatusCode = (int)HttpStatusCode.BadRequest;
         ProductName = productName;
