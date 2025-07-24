@@ -2,7 +2,7 @@
 
 namespace Cookaracha.Core.Entities;
 
-public sealed class Item : Entity
+public sealed class Item : EntityBase
 {
     public ItemId Id { get; private set; }
     public ItemName Name { get; private set; }

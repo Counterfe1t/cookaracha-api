@@ -2,12 +2,12 @@
 
 namespace Cookaracha.Core.Entities;
 
-public abstract class Entity
+public abstract class EntityBase
 {
     public Date CreatedAt { get; private set; }
     public Date? ModifiedAt { get; protected set; }
 
-    protected Entity(Date createdAt)
+    protected EntityBase(Date createdAt)
     {
         CreatedAt = createdAt;
     }

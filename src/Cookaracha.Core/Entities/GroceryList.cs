@@ -2,7 +2,7 @@
 
 namespace Cookaracha.Core.Entities;
 
-public sealed class GroceryList : Entity
+public sealed class GroceryList : EntityBase
 {
     public GroceryListId Id { get; private set; }
     public GroceryListName Name { get; private set; }
