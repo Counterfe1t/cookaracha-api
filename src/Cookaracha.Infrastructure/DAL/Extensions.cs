@@ -1,5 +1,8 @@
-﻿using Cookaracha.Core.Repositories;
+﻿using Cookaracha.Application.Abstractions;
+using Cookaracha.Core.Repositories;
+using Cookaracha.Infrastructure.DAL.Decorators;
 using Cookaracha.Infrastructure.DAL.Repositories;
+using Cookaracha.Infrastructure.DAL.Transactions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,6 +18,10 @@ internal static class Extensions
         var options = configuration.GetOptions<DatabaseOptions>(DatabaseSectionName);
 
         services.AddDbContext<CookarachaDbContext>(x => x.UseSqlServer(options.ConnectionString));
+
+        services.AddScoped<IUnitOfWork, UnitOfWork>();
+        services.TryDecorate(typeof(ICommandHandler<>), typeof(UnitOfWorkCommandHandlerDecorator<>));
+
         services.AddScoped<IProductsRepository, ProductsRepository>();
         services.AddScoped<IGroceryListsRepository, GroceryListsRepository>();
         services.AddHostedService<DatabaseInitializer>();
