@@ -1,5 +1,6 @@
 ﻿using Cookaracha.Core.Entities;
 using Cookaracha.Core.Repositories;
+using Cookaracha.Core.ValueObjects;
 
 namespace Cookaracha.Infrastructure.DAL.Repositories;
 
@@ -17,10 +18,10 @@ internal sealed class InMemoryProductsRepository : IProductsRepository
     public async Task<IEnumerable<Product>> GetAllAsync()
         => await Task.FromResult(_products);
 
-    public async Task<Product?> GetAsync(Guid id)
+    public async Task<Product?> GetAsync(EntityId id)
         => await Task.FromResult(_products.FirstOrDefault(p => p.Id == id));
 
-    public async Task<Product?> GetAsync(string name)
+    public async Task<Product?> GetAsync(ProductName name)
         => await Task.FromResult(_products.FirstOrDefault(p => p.Name == name));
 
     public Task AddAsync(Product product)

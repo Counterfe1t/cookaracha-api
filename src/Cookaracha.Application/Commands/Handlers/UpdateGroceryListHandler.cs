@@ -1,5 +1,5 @@
 ﻿using Cookaracha.Application.Abstractions;
-using Cookaracha.Application.Exceptions;
+using Cookaracha.Core.Exceptions;
 using Cookaracha.Core.Repositories;
 
 namespace Cookaracha.Application.Commands.Handlers;
@@ -19,6 +19,8 @@ public sealed class UpdateGroceryListHandler : ICommandHandler<UpdateGroceryList
             ?? throw new GroceryListNotFoundException(command.Id);
 
         groceryList.ChangeGroceryListName(command.Name);
+
+        // TODO: Update items associated with the grocery list
 
         await _groceryListsRepository.UpdateAsync(groceryList);
     }

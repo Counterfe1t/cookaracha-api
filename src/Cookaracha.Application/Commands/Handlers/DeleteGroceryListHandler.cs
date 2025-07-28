@@ -1,5 +1,5 @@
 ﻿using Cookaracha.Application.Abstractions;
-using Cookaracha.Application.Exceptions;
+using Cookaracha.Core.Exceptions;
 using Cookaracha.Core.Repositories;
 
 namespace Cookaracha.Application.Commands.Handlers;
@@ -17,6 +17,8 @@ public sealed class DeleteGroceryListHandler : ICommandHandler<DeleteGroceryList
     {
         var groceryList = await _groceryListsRepository.GetAsync(command.Id)
             ?? throw new GroceryListNotFoundException(command.Id);
+
+        // TODO: Delete all items associated with the grocery list
 
         await _groceryListsRepository.DeleteAsync(groceryList);
     }

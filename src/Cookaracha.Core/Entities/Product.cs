@@ -6,6 +6,11 @@ public sealed class Product : EntityBase
 {
     public ProductName Name { get; private set; }
 
+    /// <summary>
+    /// Empty constructor is required for EF Core property mapping.
+    /// </summary>
+    private Product() { }
+
     public Product(
         EntityId id,
         ProductName name,

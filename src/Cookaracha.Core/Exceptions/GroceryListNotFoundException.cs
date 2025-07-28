@@ -1,9 +1,8 @@
-﻿using Cookaracha.Core.Exceptions;
-using System.Net;
+﻿using System.Net;
 
-namespace Cookaracha.Application.Exceptions;
+namespace Cookaracha.Core.Exceptions;
 
-internal sealed class GroceryListNotFoundException : CustomException
+public sealed class GroceryListNotFoundException : CustomException
 {
     public Guid GroceryListId { get; }
 

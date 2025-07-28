@@ -1,4 +1,5 @@
-﻿using Cookaracha.Core.Abstractions;
+﻿using Cookaracha.Application.Abstractions;
+using Cookaracha.Core.Abstractions;
 using Cookaracha.Infrastructure.Configuration;
 using Cookaracha.Infrastructure.DAL;
 using Cookaracha.Infrastructure.Logging;
@@ -20,7 +21,12 @@ public static class Extensions
         services.AddSingleton<ExceptionMiddleware>();
         services.AddSingleton<ITimeProvider, TimeProvider>();
         services.AddCustomLogging();
-        services.AddDatabase();
+        services.AddDatabase(configuration);
+
+        services.Scan(s => s.FromAssemblies(typeof(Extensions).Assembly)
+            .AddClasses(c => c.AssignableTo(typeof(IQueryHandler<,>)))
+            .AsImplementedInterfaces()
+            .WithScopedLifetime());
 
         return services;
     }
@@ -31,5 +37,14 @@ public static class Extensions
         app.MapControllers();
 
         return app;
+    }
+
+    public static T GetOptions<T>(this IConfiguration configuration, string sectionName) where T : class, new()
+    {
+        var options = new T();
+        var section = configuration.GetSection(sectionName);
+        section.Bind(options);
+
+        return options;
     }
 }

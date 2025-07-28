@@ -1,4 +1,5 @@
 ﻿using Cookaracha.Core.Entities;
+using Cookaracha.Core.ValueObjects;
 
 namespace Cookaracha.Core.Repositories;
 
@@ -15,7 +16,7 @@ public interface IGroceryListsRepository
     /// </summary>
     /// <param name="id">Grocery list ID.</param>
     /// <returns><see cref="GroceryList"/> object.</returns>
-    Task<GroceryList?> GetAsync(Guid id);
+    Task<GroceryList?> GetAsync(EntityId id);
 
     /// <summary>
     /// Add grocery list.

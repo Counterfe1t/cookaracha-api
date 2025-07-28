@@ -1,4 +1,5 @@
 ﻿using Cookaracha.Core.Entities;
+using Cookaracha.Core.ValueObjects;
 
 namespace Cookaracha.Core.Repositories;
 
@@ -15,14 +16,14 @@ public interface IProductsRepository
     /// </summary>
     /// <param name="id">Product ID.</param>
     /// <returns><see cref="Product"/> object.</returns>
-    Task<Product?> GetAsync(Guid id);
+    Task<Product?> GetAsync(EntityId id);
 
     /// <summary>
     /// Get product by name.
     /// </summary>
     /// <param name="name">Product name.</param>
     /// <returns><see cref="Product"/> object.</returns>
-    Task<Product?> GetAsync(string name);
+    Task<Product?> GetAsync(ProductName name);
 
     /// <summary>
     /// Add product.

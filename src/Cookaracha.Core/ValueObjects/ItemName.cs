@@ -1,4 +1,6 @@
-﻿namespace Cookaracha.Core.ValueObjects;
+﻿using Cookaracha.Core.Exceptions;
+
+namespace Cookaracha.Core.ValueObjects;
 
 public sealed record ItemName
 {
@@ -6,6 +8,9 @@ public sealed record ItemName
 
     public ItemName(string value)
     {
+        if (string.IsNullOrWhiteSpace(value))
+            throw new InvliadItemNameException(value);
+
         Value = value;
     }
 

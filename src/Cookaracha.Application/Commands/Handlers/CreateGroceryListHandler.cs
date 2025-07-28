@@ -1,5 +1,6 @@
 ﻿using Cookaracha.Application.Abstractions;
 using Cookaracha.Core.Abstractions;
+using Cookaracha.Core.Entities;
 using Cookaracha.Core.Repositories;
 using Cookaracha.Core.ValueObjects;
 
@@ -17,5 +18,18 @@ public sealed class CreateGroceryListHandler : ICommandHandler<CreateGroceryList
     }
 
     public async Task HandleAsync(CreateGroceryList command)
-        => await _groceryListsRepository.AddAsync(new(command.Id, command.Name, new Date(_timeProvider.UtcNow)));
+    {
+        var groceryList = new GroceryList(command.Id, command.Name, new(_timeProvider.UtcNow));
+        var items = command.Items.Select(i => new Item(
+            Guid.NewGuid(),
+            command.Id,
+            i.ProductId,
+            i.Name ?? string.Empty,
+            i.Quantity,
+            new Date(_timeProvider.UtcNow)));
+
+        groceryList.AddItems(items);
+
+        await _groceryListsRepository.AddAsync(groceryList);
+    }
 }

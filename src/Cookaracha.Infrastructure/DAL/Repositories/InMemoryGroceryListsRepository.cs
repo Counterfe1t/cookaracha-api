@@ -1,5 +1,6 @@
 ﻿using Cookaracha.Core.Entities;
 using Cookaracha.Core.Repositories;
+using Cookaracha.Core.ValueObjects;
 
 namespace Cookaracha.Infrastructure.DAL.Repositories;
 
@@ -17,7 +18,7 @@ internal sealed class InMemoryGroceryListsRepository : IGroceryListsRepository
     public async Task<IEnumerable<GroceryList>> GetAllAsync()
         => await Task.FromResult(_groceryLists);
 
-    public async Task<GroceryList?> GetAsync(Guid id)
+    public async Task<GroceryList?> GetAsync(EntityId id)
         => await Task.FromResult(_groceryLists.FirstOrDefault(gl => gl.Id == id));
 
     public Task AddAsync(GroceryList groceryList)

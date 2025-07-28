@@ -53,7 +53,18 @@ Accept: application/json
 POST {{ApiUrl}}/api/grocery-lists
 Content-Type: application/json
 {
-    "name": "My grocery list"
+    "name": "My grocery list",
+    "items": [
+        {
+            "name": "apple",
+            "quantity": 2137,
+            "productId": "00000000-0000-0000-0000-000000000002"
+        },
+        {
+            "name": "orange",
+            "quantity": 2137
+        }
+    ]
 }
 
 ### Update grocery list
@@ -61,7 +72,7 @@ Content-Type: application/json
 PUT {{ApiUrl}}/api/grocery-lists/{{GroceryListId}}
 Content-Type: application/json
 {
-    "name": "My grocery list"
+    "name": "My edited grocery list"
 }
 
 ### Delete grocery list

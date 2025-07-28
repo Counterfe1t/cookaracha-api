@@ -17,6 +17,9 @@ public sealed record EntityId
     public static implicit operator Guid(EntityId id)
         => id.Value;
 
+    public static implicit operator Guid?(EntityId id)
+        => id?.Value;
+
     public static implicit operator EntityId(Guid value)
         => new(value);
 

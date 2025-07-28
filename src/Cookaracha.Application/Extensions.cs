@@ -12,11 +12,6 @@ public static class Extensions
             .AsImplementedInterfaces()
             .WithScopedLifetime());
 
-        services.Scan(s => s.FromAssemblies(typeof(IQueryHandler<,>).Assembly)
-            .AddClasses(c => c.AssignableTo(typeof(IQueryHandler<,>)))
-            .AsImplementedInterfaces()
-            .WithScopedLifetime());
-
         return services;
     }
 }
