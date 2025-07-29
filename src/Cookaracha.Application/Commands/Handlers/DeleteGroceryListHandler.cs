@@ -18,8 +18,6 @@ public sealed class DeleteGroceryListHandler : ICommandHandler<DeleteGroceryList
         var groceryList = await _groceryListsRepository.GetAsync(command.Id)
             ?? throw new GroceryListNotFoundException(command.Id);
 
-        // TODO: Delete all items associated with the grocery list
-
         await _groceryListsRepository.DeleteAsync(groceryList);
     }
 }

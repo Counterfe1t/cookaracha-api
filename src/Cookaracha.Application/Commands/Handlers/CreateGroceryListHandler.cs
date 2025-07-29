@@ -24,7 +24,7 @@ public sealed class CreateGroceryListHandler : ICommandHandler<CreateGroceryList
             Guid.NewGuid(),
             command.Id,
             i.ProductId,
-            i.Name ?? string.Empty,
+            i.Product?.Name ?? i.Name!,
             i.Quantity,
             new Date(_timeProvider.UtcNow)));
 

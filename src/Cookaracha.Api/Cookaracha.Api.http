@@ -58,7 +58,11 @@ Content-Type: application/json
         {
             "name": "apple",
             "quantity": 2137,
-            "productId": "00000000-0000-0000-0000-000000000002"
+            "productId": "00000000-0000-0000-0000-000000000002",
+            "product": {
+              "id": "00000000-0000-0000-0000-000000000002",
+              "name": "orange"
+            }
         },
         {
             "name": "orange",

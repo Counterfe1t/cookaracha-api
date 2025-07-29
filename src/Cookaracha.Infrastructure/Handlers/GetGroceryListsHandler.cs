@@ -14,13 +14,11 @@ internal sealed class GetGroceryListsHandler : IQueryHandler<GetGroceryLists, IE
         => _dbContext = dbContext;
 
     public async Task<IEnumerable<GroceryListDto>> HandleAsync(GetGroceryLists query)
-    {
-        var groceryLists = await _dbContext.GroceryLists
+        => await _dbContext.GroceryLists
             .AsNoTracking()
             .Include(gl => gl.Items)
             .ThenInclude(i => i.Product)
+            .OrderBy(gl => gl.CreatedAt)
+            .Select(gl => gl.AsDto())
             .ToListAsync();
-
-        return groceryLists.Select(gl => gl.AsDto());
-    }
 }

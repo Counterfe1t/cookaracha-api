@@ -28,5 +28,6 @@ internal static class Extensions
             Id = entity.Id,
             Name = entity.Name,
             Items = entity.Items.Select(i => i.AsDto()),
+            CreatedAt = entity.CreatedAt,
         };
 }

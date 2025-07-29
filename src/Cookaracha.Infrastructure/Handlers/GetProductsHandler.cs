@@ -11,16 +11,12 @@ internal sealed class GetProductsHandler : IQueryHandler<GetProducts, IEnumerabl
     private readonly CookarachaDbContext _dbContext;
 
     public GetProductsHandler(CookarachaDbContext dbContext)
-    {
-        _dbContext = dbContext;
-    }
+        => _dbContext = dbContext;
 
     public async Task<IEnumerable<ProductDto>> HandleAsync(GetProducts query)
-    {
-        var products = await _dbContext.Products
+        => await _dbContext.Products
             .AsNoTracking()
+            .OrderBy(p => p.Name)
+            .Select(p => p.AsDto())
             .ToListAsync();
-
-        return products.Select(p => p.AsDto());
-    }
 }
