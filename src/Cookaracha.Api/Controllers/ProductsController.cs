@@ -11,55 +11,44 @@ namespace Cookaracha.Api.Controllers;
 [Route("api/[controller]")]
 public class ProductsController : ControllerBase
 {
-    private readonly IQueryHandler<GetProducts, IEnumerable<ProductDto>> _getProductsHandler;
-    private readonly IQueryHandler<GetProduct, ProductDto> _getProductHandler;
-
-    private readonly ICommandHandler<CreateProduct> _createProductHandler;
-    private readonly ICommandHandler<UpdateProduct> _updateProductHandler;
-    private readonly ICommandHandler<DeleteProduct> _deleteProductHandler;
-
-    public ProductsController(
-        IQueryHandler<GetProducts, IEnumerable<ProductDto>> getProductsHandler,
-        IQueryHandler<GetProduct, ProductDto> getProductHandler,
-        ICommandHandler<CreateProduct> createProductHandler,
-        ICommandHandler<UpdateProduct> updateProductHandler,
-        ICommandHandler<DeleteProduct> deleteProductHandler)
-    {
-        _getProductsHandler = getProductsHandler;
-        _getProductHandler = getProductHandler;
-        _createProductHandler = createProductHandler;
-        _updateProductHandler = updateProductHandler;
-        _deleteProductHandler = deleteProductHandler;
-    }
-
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<ProductDto>>> Get([FromQuery] GetProducts query)
-        => Ok(await _getProductsHandler.HandleAsync(query));
+    public async Task<ActionResult<IEnumerable<ProductDto>>> Get(
+        [FromQuery] GetProducts query,
+        [FromServices] IQueryHandler<GetProducts, IEnumerable<ProductDto>> handler)
+        => Ok(await handler.HandleAsync(query));
 
     [HttpGet("{id:guid}")]
-    public async Task<ActionResult<ProductDto>> Get([FromRoute] Guid id)
-        => Ok(await _getProductHandler.HandleAsync(new GetProduct(id)));
+    public async Task<ActionResult<ProductDto>> Get(
+        [FromRoute] Guid id,
+        [FromServices] IQueryHandler<GetProduct, ProductDto> handler)
+        => Ok(await handler.HandleAsync(new GetProduct(id)));
 
     [HttpPost]
-    public async Task<ActionResult> Post([FromBody] CreateProduct command)
+    public async Task<ActionResult> Post(
+        [FromBody] CreateProduct command,
+        [FromServices] ICommandHandler<CreateProduct> handler)
     {
         command = command with { Id = Guid.NewGuid() };
-        await _createProductHandler.HandleAsync(command);
-
+        await handler.HandleAsync(command);
         return CreatedAtAction(nameof(Get), new { command.Id }, null);
     }
 
     [HttpPut("{id:guid}")]
-    public async Task<ActionResult> Put([FromRoute] Guid id, [FromBody] UpdateProduct command)
+    public async Task<ActionResult> Put(
+        [FromRoute] Guid id,
+        [FromBody] UpdateProduct command,
+        [FromServices] ICommandHandler<UpdateProduct> handler)
     {
-        await _updateProductHandler.HandleAsync(command with { Id = id });
+        await handler.HandleAsync(command with { Id = id });
         return NoContent();
     }
 
     [HttpDelete("{id:guid}")]
-    public async Task<ActionResult> Delete([FromRoute] Guid id)
+    public async Task<ActionResult> Delete(
+        [FromRoute] Guid id,
+        [FromServices] ICommandHandler<DeleteProduct> handler)
     {
-        await _deleteProductHandler.HandleAsync(new DeleteProduct(id));
+        await handler.HandleAsync(new DeleteProduct(id));
         return NoContent();
     }
 }
