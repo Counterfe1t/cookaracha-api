@@ -24,6 +24,7 @@ internal static class Extensions
 
         services.AddScoped<IProductsRepository, ProductsRepository>();
         services.AddScoped<IGroceryListsRepository, GroceryListsRepository>();
+        services.AddScoped<IItemsRepository, ItemsRepository>();
         services.AddHostedService<DatabaseInitializer>();
 
         return services;
