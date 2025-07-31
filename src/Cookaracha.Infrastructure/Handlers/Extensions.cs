@@ -20,6 +20,7 @@ internal static class Extensions
             Quantity = entity.Quantity,
             ProductId = entity.ProductId?.Value,
             Product = entity.Product?.AsDto(),
+            CreatedAt = entity.CreatedAt,
         };
 
     public static GroceryListDto AsDto(this GroceryList entity)

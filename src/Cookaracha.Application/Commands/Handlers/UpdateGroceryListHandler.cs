@@ -20,8 +20,6 @@ public sealed class UpdateGroceryListHandler : ICommandHandler<UpdateGroceryList
 
         groceryList.ChangeGroceryListName(command.Name);
 
-        // TODO: Update items associated with the grocery list
-
         await _groceryListsRepository.UpdateAsync(groceryList);
     }
 }

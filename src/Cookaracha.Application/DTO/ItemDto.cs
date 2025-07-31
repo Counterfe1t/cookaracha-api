@@ -7,4 +7,5 @@ public class ItemDto
     public string? Name { get; set; }
     public double Quantity { get; set; }
     public ProductDto? Product { get; set; }
+    public DateTimeOffset CreatedAt { get; set; }
 }

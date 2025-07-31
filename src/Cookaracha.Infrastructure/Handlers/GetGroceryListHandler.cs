@@ -21,7 +21,7 @@ internal sealed class GetGroceryListHandler : IQueryHandler<GetGroceryList, Groc
             .AsNoTracking()
             .Include(gl => gl.Items)
             .ThenInclude(i => i.Product)
-            .FirstOrDefaultAsync(gl => gl.Id == new EntityId(query.GroceryListId))
+            .SingleOrDefaultAsync(gl => gl.Id == new EntityId(query.GroceryListId))
             ?? throw new GroceryListNotFoundException(query.GroceryListId);
 
         return groceryList.AsDto();

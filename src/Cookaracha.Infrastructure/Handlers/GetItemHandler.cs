@@ -8,20 +8,20 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Cookaracha.Infrastructure.Handlers;
 
-internal sealed class GetProductHandler : IQueryHandler<GetProduct, ProductDto>
+internal sealed class GetItemHandler : IQueryHandler<GetItem, ItemDto>
 {
     private readonly CookarachaDbContext _dbContext;
 
-    public GetProductHandler(CookarachaDbContext dbContext)
+    public GetItemHandler(CookarachaDbContext dbContext)
         => _dbContext = dbContext;
 
-    public async Task<ProductDto> HandleAsync(GetProduct query)
+    public async Task<ItemDto> HandleAsync(GetItem query)
     {
-        var product = await _dbContext.Products
+        var item = await _dbContext.Items
             .AsNoTracking()
-            .SingleOrDefaultAsync(p => p.Id == new EntityId(query.ProductId))
-            ?? throw new ProductNotFoundException(query.ProductId);
+            .SingleOrDefaultAsync(i => i.Id == new EntityId(query.Id))
+            ?? throw new ItemNotFoundException(query.Id);
 
-        return product.AsDto();
+        return item.AsDto();
     }
 }

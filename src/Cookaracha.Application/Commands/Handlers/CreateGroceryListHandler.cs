@@ -26,7 +26,7 @@ public sealed class CreateGroceryListHandler : ICommandHandler<CreateGroceryList
             i.ProductId,
             i.Product?.Name ?? i.Name!,
             i.Quantity,
-            new Date(_timeProvider.UtcNow)));
+            new(_timeProvider.UtcNow)));
 
         groceryList.AddItems(items);
 

@@ -1,9 +1,9 @@
 ﻿using Cookaracha.Application.Abstractions;
-using Cookaracha.Application.DTO;
 
 namespace Cookaracha.Application.Commands;
 
-public sealed record CreateGroceryList(
+public sealed record UpdateItem(
     Guid Id,
+    Guid? ProductId,
     string Name,
-    IEnumerable<ItemDto> Items) : ICommand;
+    int Quantity) : ICommand;

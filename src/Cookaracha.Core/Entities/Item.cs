@@ -10,6 +10,9 @@ public sealed class Item : EntityBase
     public ItemQuantity Quantity { get; private set; }
     public Product? Product { get; private set; }
 
+    /// <summary>
+    /// Empty constructor is required for EF Core property mapping.
+    /// </summary>
     private Item() { }
 
     public Item(
@@ -23,6 +26,24 @@ public sealed class Item : EntityBase
         GroceryListId = groceryListId;
         ProductId = productId;
         Name = name;
+        Quantity = quantity;
+    }
+
+    public void ChangeProductId(Guid? productId)
+    {
+        ModifiedAt = DateTimeOffset.UtcNow;
+        ProductId = productId;
+    }
+
+    public void ChangeName(ItemName name)
+    {
+        ModifiedAt = DateTimeOffset.UtcNow;
+        Name = name;
+    }
+
+    public void ChangeQuantity(ItemQuantity quantity)
+    {
+        ModifiedAt = DateTimeOffset.UtcNow;
         Quantity = quantity;
     }
 }
