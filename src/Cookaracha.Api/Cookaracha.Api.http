@@ -1,6 +1,7 @@
 @ApiUrl = https://localhost:1337
 @ProductId = 00000000-0000-0000-0000-000000000001
 @GroceryListId = 00000000-0000-0000-0000-000000000001
+@ItemId = 00000000-0000-0000-0000-000000000001
 
 ### Get application name
 
@@ -56,16 +57,16 @@ Content-Type: application/json
     "name": "My grocery list",
     "items": [
         {
-            "name": "apple",
+            "name": "Apple",
             "quantity": 2137,
-            "productId": "00000000-0000-0000-0000-000000000002",
+            "productId": "{{ProductId}}",
             "product": {
-              "id": "00000000-0000-0000-0000-000000000002",
-              "name": "orange"
+              "id": "{{ProductId}}",
+              "name": "Orange"
             }
         },
         {
-            "name": "orange",
+            "name": "Pear",
             "quantity": 2137
         }
     ]
@@ -82,4 +83,32 @@ Content-Type: application/json
 ### Delete grocery list
 
 DELETE {{ApiUrl}}/api/grocery-lists/{{GroceryListId}}
+Accept: application/json
+
+### Get item by id
+
+GET {{ApiUrl}}/api/grocery-lists/{{GroceryListId}}/items/{{ItemId}}
+Accept: application/json
+
+### Create item
+
+POST {{ApiUrl}}/api/grocery-lists/{{GroceryListId}}/items
+Content-Type: application/json
+{
+    "name": "Lime",
+    "quantity": 1337
+}
+
+### Update item
+
+PUT {{ApiUrl}}/api/grocery-lists/{{GroceryListId}}/items/{{ItemId}}
+Content-Type: application/json
+{
+    "name": "Grapes",
+    "quantity": 2137
+}
+
+### Delete tiem
+
+DELETE {{ApiUrl}}/api/grocery-lists/{{GroceryListId}}/items/{{ItemId}}
 Accept: application/json

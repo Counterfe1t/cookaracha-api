@@ -11,7 +11,7 @@ internal sealed class ExceptionMiddleware : IMiddleware
 
     private record Error(string Code, string Message);
 
-    private ILogger<ExceptionMiddleware> _logger;
+    private readonly ILogger<ExceptionMiddleware> _logger;
 
     public ExceptionMiddleware(ILogger<ExceptionMiddleware> logger)
     {
