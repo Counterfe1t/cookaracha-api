@@ -15,15 +15,28 @@ public sealed record Date
     public static implicit operator Date(DateTimeOffset value)
         => new(value);
 
-    public static bool operator <(Date date1, Date date2)
-        => date1.Value < date2.Value;
+    public static bool operator <(Date left, Date right)
+        => left.Value < right.Value;
 
-    public static bool operator >(Date date1, Date date2)
-        => date1.Value > date2.Value;
+    public static bool operator >(Date left, Date right)
+        => left.Value > right.Value;
 
-    public static bool operator <=(Date date1, Date date2)
-        => date1.Value <= date2.Value;
+    public static bool operator <=(Date left, Date right)
+        => left.Value <= right.Value;
 
-    public static bool operator >=(Date date1, Date date2)
-        => date1.Value >= date2.Value;
+    public static bool operator >=(Date left, Date right)
+        => left.Value >= right.Value;
+
+    public static bool operator ==(DateTimeOffset left, Date right)
+        => left == right.Value;
+    
+    public static bool operator ==(Date left, DateTimeOffset right)
+        => left.Value == right;
+
+    public static bool operator !=(DateTimeOffset left, Date right)
+        => left != right.Value;
+    
+    public static bool operator !=(Date left, DateTimeOffset right)
+        => left.Value != right;
+
 }

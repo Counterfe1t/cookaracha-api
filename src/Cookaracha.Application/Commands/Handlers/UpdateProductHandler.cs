@@ -19,6 +19,7 @@ internal sealed class UpdateProductHandler : ICommandHandler<UpdateProduct>
             ?? throw new ProductNotFoundException(command.Id);
 
         product.ChangeProductName(command.Name);
+        product.Modified();
 
         await _productsRepository.UpdateAsync(product);
     }

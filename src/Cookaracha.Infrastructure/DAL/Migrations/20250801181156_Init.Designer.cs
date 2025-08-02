@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Cookaracha.Infrastructure.DAL.Migrations
 {
     [DbContext(typeof(CookarachaDbContext))]
-    [Migration("20250728210524_Init")]
+    [Migration("20250801181156_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -55,6 +55,9 @@ namespace Cookaracha.Infrastructure.DAL.Migrations
 
                     b.Property<Guid>("GroceryListId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("IsChecked")
+                        .HasColumnType("bit");
 
                     b.Property<DateTimeOffset?>("ModifiedAt")
                         .HasColumnType("datetimeoffset");

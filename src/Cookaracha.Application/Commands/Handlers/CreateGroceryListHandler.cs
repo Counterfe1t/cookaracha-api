@@ -2,7 +2,6 @@
 using Cookaracha.Core.Abstractions;
 using Cookaracha.Core.Entities;
 using Cookaracha.Core.Repositories;
-using Cookaracha.Core.ValueObjects;
 
 namespace Cookaracha.Application.Commands.Handlers;
 
@@ -22,11 +21,12 @@ public sealed class CreateGroceryListHandler : ICommandHandler<CreateGroceryList
         var groceryList = new GroceryList(command.Id, command.Name, new(_timeProvider.UtcNow));
         var items = command.Items.Select(i => new Item(
             Guid.NewGuid(),
+            _timeProvider.UtcNow,
             command.Id,
             i.ProductId,
             i.Product?.Name ?? i.Name!,
             i.Quantity,
-            new(_timeProvider.UtcNow)));
+            i.IsChecked));
 
         groceryList.AddItems(items);
 

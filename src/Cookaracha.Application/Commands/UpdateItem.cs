@@ -6,4 +6,5 @@ public sealed record UpdateItem(
     Guid Id,
     Guid? ProductId,
     string Name,
-    int Quantity) : ICommand;
+    int Quantity,
+    bool IsChecked) : ICommand;

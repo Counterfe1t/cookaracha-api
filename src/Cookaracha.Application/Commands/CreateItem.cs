@@ -7,4 +7,5 @@ public sealed record CreateItem(
     Guid GroceryListId,
     Guid? ProductId,
     string Name,
-    int Quantity) : ICommand;
+    int Quantity,
+    bool IsChecked) : ICommand;

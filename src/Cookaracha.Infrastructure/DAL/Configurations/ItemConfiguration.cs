@@ -21,14 +21,17 @@ internal sealed class ItemConfiguration : IEntityTypeConfiguration<Item>
         builder.Property(i => i.GroceryListId)
             .HasConversion(x => x.Value, x => new EntityId(x))
             .IsRequired();
+        builder.Property(i => i.ProductId)
+            .HasConversion(x => x.Value, x => new EntityId(x))
+            .IsRequired(false);
         builder.Property(i => i.Name)
             .HasConversion(x => x.Value, x => new ItemName(x))
             .IsRequired();
         builder.Property(i => i.Quantity)
             .HasConversion(x => x.Value, x => new ItemQuantity(x))
             .IsRequired();
-        builder.Property(i => i.ProductId)
-            .HasConversion(x => x.Value, x => new EntityId(x))
-            .IsRequired(false);
+        builder.Property(i => i.IsChecked)
+            .HasConversion(x => x.Value, x => new ItemChecked(x))
+            .IsRequired();
     }
 }

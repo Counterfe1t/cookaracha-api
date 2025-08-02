@@ -16,13 +16,12 @@ internal sealed class CreateItemHandler : ICommandHandler<CreateItem>
     }
 
     public async Task HandleAsync(CreateItem command)
-    {
-        await _itemsRepository.AddAsync(new(
+        => await _itemsRepository.AddAsync(new(
             command.Id,
+            _timeProvider.UtcNow,
             command.GroceryListId,
             command.ProductId,
             command.Name,
             command.Quantity,
-            _timeProvider.UtcNow));
-    }
+            command.IsChecked));
 }

@@ -53,6 +53,9 @@ namespace Cookaracha.Infrastructure.DAL.Migrations
                     b.Property<Guid>("GroceryListId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<bool>("IsChecked")
+                        .HasColumnType("bit");
+
                     b.Property<DateTimeOffset?>("ModifiedAt")
                         .HasColumnType("datetimeoffset");
 

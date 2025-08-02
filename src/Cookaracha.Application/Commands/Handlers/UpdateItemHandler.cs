@@ -19,6 +19,9 @@ internal sealed class UpdateItemHandler : ICommandHandler<UpdateItem>
         item.ChangeName(command.Name);
         item.ChangeQuantity(command.Quantity);
         item.ChangeProductId(command.ProductId);
+        item.ChangeIsChecked(command.IsChecked);
+        item.Modified();
+
         await _itemsRepository.UpdateAsync(item);
     }
 }

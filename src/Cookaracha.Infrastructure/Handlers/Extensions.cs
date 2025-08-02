@@ -9,6 +9,8 @@ internal static class Extensions
         => new()
         {
             Id = entity.Id,
+            CreatedAt = entity.CreatedAt,
+            ModifiedAt = entity.ModifiedAt?.Value,
             Name = entity.Name,
         };
 
@@ -16,19 +18,23 @@ internal static class Extensions
         => new()
         {
             Id = entity.Id,
-            Name = entity.Name,
-            Quantity = entity.Quantity,
+            CreatedAt = entity.CreatedAt,
+            ModifiedAt = entity.ModifiedAt?.Value,
+            GroceryListId = entity.GroceryListId,
             ProductId = entity.ProductId?.Value,
             Product = entity.Product?.AsDto(),
-            CreatedAt = entity.CreatedAt,
+            Name = entity.Name,
+            Quantity = entity.Quantity,
+            IsChecked = entity.IsChecked,
         };
 
     public static GroceryListDto AsDto(this GroceryList entity)
         => new()
         {
             Id = entity.Id,
+            CreatedAt = entity.CreatedAt,
+            ModifiedAt = entity.ModifiedAt?.Value,
             Name = entity.Name,
             Items = entity.Items.Select(i => i.AsDto()),
-            CreatedAt = entity.CreatedAt,
         };
 }

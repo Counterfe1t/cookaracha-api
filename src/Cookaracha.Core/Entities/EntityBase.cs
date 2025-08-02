@@ -18,4 +18,9 @@ public abstract class EntityBase
         Id = id;
         CreatedAt = createdAt;
     }
+
+    public void Modified()
+    {
+        ModifiedAt = DateTimeOffset.UtcNow;
+    }
 }

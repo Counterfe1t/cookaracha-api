@@ -37,15 +37,4 @@ public sealed class GroceryList : EntityBase
         foreach (var item in items)
             AddItem(item);
     }
-
-    public void RemoveItem(EntityId itemId)
-    {
-        _items.RemoveWhere(x => x.Id == itemId);
-    }
-
-    public void RemoveItems(IEnumerable<EntityId> itemIds)
-    {
-        foreach (var id in itemIds)
-            RemoveItem(id);
-    }
 }
