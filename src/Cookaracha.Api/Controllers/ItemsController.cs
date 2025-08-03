@@ -46,7 +46,7 @@ public class ItemsController : ControllerBase
     {
         command = command with { Id = Guid.NewGuid(), GroceryListId = groceryListId };
         await handler.HandleAsync(command);
-        return CreatedAtAction(nameof(Get), new { command.GroceryListId, command.Id }, null);
+        return CreatedAtAction(nameof(Get), new { command.GroceryListId, ItemId = command.Id }, null);
     }
 
     [HttpPut("{itemId:guid}")]
