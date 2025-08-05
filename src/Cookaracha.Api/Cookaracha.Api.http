@@ -10,7 +10,7 @@ Accept: application/json
 
 ### Get all products
 
-GET {{ApiUrl}}/api/products
+GET {{ApiUrl}}/api/products?pageNumber=1&pageSize=5
 Accept: application/json
 
 ### Get product by id
@@ -41,7 +41,7 @@ Accept: application/json
 
 ### Get all grocery lists
 
-GET {{ApiUrl}}/api/grocery-lists
+GET {{ApiUrl}}/api/grocery-lists?pageNumber=1&pageSize=5
 Accept: application/json
 
 ### Get grocery list by id
@@ -83,6 +83,11 @@ Content-Type: application/json
 ### Delete grocery list
 
 DELETE {{ApiUrl}}/api/grocery-lists/{{GroceryListId}}
+Accept: application/json
+
+### Get items
+
+GET {{ApiUrl}}/api/grocery-lists/{{GroceryListId}}/items?pageNumber=1&pageSize=5
 Accept: application/json
 
 ### Get item by id

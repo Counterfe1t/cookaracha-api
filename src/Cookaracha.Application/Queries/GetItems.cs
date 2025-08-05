@@ -5,5 +5,5 @@ namespace Cookaracha.Application.Queries;
 
 public sealed record GetItems(
     Guid GroceryListId,
-    int PageSize,
-    int PageLimit) : IQuery<IEnumerable<ItemDto>>;
+    int PageNumber,
+    int PageSize) : IQuery<IEnumerable<ItemDto>>;

@@ -15,12 +15,12 @@ internal class GetItemsHandler : IQueryHandler<GetItems, IEnumerable<ItemDto>>
         => _dbContext = dbContext;
 
     public async Task<IEnumerable<ItemDto>> HandleAsync(GetItems query)
-    {
-        return await _dbContext.Items
+        => await _dbContext.Items
             .AsNoTracking()
             .Where(i => i.GroceryListId == new EntityId(query.GroceryListId))
             .OrderBy(i => i.CreatedAt)
             .Select(i => i.AsDto())
+            .Skip((query.PageNumber - 1) * query.PageSize)
+            .Take(query.PageSize)
             .ToListAsync();
-    }
 }

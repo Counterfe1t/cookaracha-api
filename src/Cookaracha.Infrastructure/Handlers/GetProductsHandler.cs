@@ -18,5 +18,7 @@ internal sealed class GetProductsHandler : IQueryHandler<GetProducts, IEnumerabl
             .AsNoTracking()
             .OrderBy(p => p.Name)
             .Select(p => p.AsDto())
+            .Skip((query.PageNumber - 1) * query.PageSize)
+            .Take(query.PageSize)
             .ToListAsync();
 }

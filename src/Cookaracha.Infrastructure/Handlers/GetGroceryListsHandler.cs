@@ -20,5 +20,7 @@ internal sealed class GetGroceryListsHandler : IQueryHandler<GetGroceryLists, IE
             .ThenInclude(i => i.Product)
             .OrderBy(gl => gl.CreatedAt)
             .Select(gl => gl.AsDto())
+            .Skip((query.PageNumber - 1) * query.PageSize)
+            .Take(query.PageSize)
             .ToListAsync();
 }
