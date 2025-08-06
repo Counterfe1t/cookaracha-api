@@ -33,22 +33,14 @@ public sealed class Item : EntityBase
     }
 
     public void ChangeProductId(Guid? productId)
-    {
-        ProductId = productId;
-    }
+        => ProductId = productId;
 
     public void ChangeName(ItemName name)
-    {
-        Name = name;
-    }
+        => Name = name;
 
     public void ChangeQuantity(ItemQuantity quantity)
-    {
-        Quantity = quantity;
-    }
+        => Quantity = quantity;
 
     public void ChangeIsChecked(ItemChecked isChecked)
-    {
-        IsChecked = isChecked;
-    }
+        => IsChecked = isChecked;
 }

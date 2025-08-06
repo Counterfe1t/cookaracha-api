@@ -19,8 +19,6 @@ public abstract class EntityBase
         CreatedAt = createdAt;
     }
 
-    public void Modified()
-    {
-        ModifiedAt = DateTimeOffset.UtcNow;
-    }
+    public void ChangeModifiedAt(Date modifiedAt)
+        => ModifiedAt = modifiedAt;
 }

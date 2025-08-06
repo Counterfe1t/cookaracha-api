@@ -1,4 +1,5 @@
 ﻿using Cookaracha.Application.Abstractions;
+using Cookaracha.Core.Abstractions;
 using Cookaracha.Core.Exceptions;
 using Cookaracha.Core.Repositories;
 
@@ -6,10 +7,14 @@ namespace Cookaracha.Application.Commands.Handlers;
 
 internal sealed class UpdateItemHandler : ICommandHandler<UpdateItem>
 {
+    private readonly ITimeProvider _timeProvider;
     private readonly IItemsRepository _itemsRepository;
 
-    public UpdateItemHandler(IItemsRepository itemsRepository)
-        => _itemsRepository = itemsRepository;
+    public UpdateItemHandler(ITimeProvider timeProvider, IItemsRepository itemsRepository)
+    {
+        _itemsRepository = itemsRepository;
+        _timeProvider = timeProvider;
+    }
 
     public async Task HandleAsync(UpdateItem command)
     {
@@ -20,7 +25,7 @@ internal sealed class UpdateItemHandler : ICommandHandler<UpdateItem>
         item.ChangeQuantity(command.Quantity);
         item.ChangeProductId(command.ProductId);
         item.ChangeIsChecked(command.IsChecked);
-        item.Modified();
+        item.ChangeModifiedAt(_timeProvider.UtcNow);
 
         await _itemsRepository.UpdateAsync(item);
     }
