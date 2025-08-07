@@ -1,4 +1,6 @@
 ﻿using Cookaracha.Core.Exceptions;
+using Cookaracha.Core.Sanitization;
+using Cookaracha.Core.Validation;
 
 namespace Cookaracha.Core.ValueObjects;
 
@@ -8,10 +10,9 @@ public sealed record ItemName
 
     public ItemName(string value)
     {
-        if (string.IsNullOrWhiteSpace(value))
-            throw new InvliadItemNameException(value);
-
-        Value = value;
+        Value = ItemNameValidator.IsValid(value)
+            ? ItemNameSanitizer.Sanitize(value)
+            : throw new InvliadItemNameException(value);
     }
 
     public static implicit operator string(ItemName id)
