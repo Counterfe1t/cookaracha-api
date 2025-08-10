@@ -32,7 +32,7 @@ public sealed class Item : EntityBase
         IsChecked = isChecked;
     }
 
-    public void ChangeProductId(Guid? productId)
+    public void ChangeProductId(EntityId? productId)
         => ProductId = productId;
 
     public void ChangeName(ItemName name)
