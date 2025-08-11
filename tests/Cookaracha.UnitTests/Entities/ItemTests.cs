@@ -101,6 +101,47 @@ public class ItemTests
         exception.ShouldBeOfType<InvalidEntityIdException>();
     }
 
+    [Fact]
+    public void ChangeQuantity_QuantityIsValid_ShouldChangeQuantity()
+    {
+        // arrange
+        var item = new Item(
+            Guid.NewGuid(),
+            DateTimeOffset.UtcNow,
+            Guid.NewGuid(),
+            null,
+            "dummy",
+            1337,
+            false);
+
+        // act
+        item.ChangeQuantity(2137);
+        
+        // assert
+        item.Quantity.Value.ShouldBe(2137);
+    }
+
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public void ChangeIsChecked_IsCheckedIsValid_ShouldChangeIsChecked(bool newValue)
+    {
+        // arrange
+        var item = new Item(
+            Guid.NewGuid(),
+            DateTimeOffset.UtcNow,
+            Guid.NewGuid(),
+            null,
+            "dummy",
+            1337,
+            false);
+
+        // act
+        item.ChangeIsChecked(newValue);
+
+        // assert
+        item.IsChecked.Value.ShouldBe(newValue);
+    }
 
     #region TestData
 
