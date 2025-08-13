@@ -20,7 +20,5 @@ public sealed class Product : EntityBase
     }
 
     public void ChangeProductName(ProductName name)
-    {
-        Name = name;
-    }
+        => Name = name;
 }

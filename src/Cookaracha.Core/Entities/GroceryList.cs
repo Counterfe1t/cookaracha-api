@@ -23,14 +23,10 @@ public sealed class GroceryList : EntityBase
     }
 
     public void ChangeGroceryListName(GroceryListName name)
-    {
-        Name = name;
-    }
+        => Name = name;
 
     public void AddItem(Item item)
-    {
-        _items.Add(item);
-    }
+        => _items.Add(item);
 
     public void AddItems(IEnumerable<Item> items)
     {
