@@ -24,7 +24,7 @@ public sealed class CreateGroceryListHandler : ICommandHandler<CreateGroceryList
             _timeProvider.UtcNow,
             command.Id,
             i.ProductId,
-            i.Product?.Name ?? i.Name!,
+            i.Product?.Name ?? i.Name ?? string.Empty,
             i.Quantity,
             i.IsChecked));
 

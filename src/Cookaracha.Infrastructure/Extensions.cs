@@ -1,13 +1,12 @@
-﻿using Cookaracha.Application.Abstractions;
-using Cookaracha.Core.Abstractions;
+﻿using Cookaracha.Core.Abstractions;
 using Cookaracha.Infrastructure.Configuration;
 using Cookaracha.Infrastructure.DAL;
+using Cookaracha.Infrastructure.DAL.Queries;
 using Cookaracha.Infrastructure.Logging;
 using Cookaracha.Infrastructure.Middleware;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.OpenApi.Models;
 using TimeProvider = Cookaracha.Infrastructure.Time.TimeProvider;
 
 namespace Cookaracha.Infrastructure;
@@ -24,11 +23,7 @@ public static class Extensions
         services.AddSingleton<ITimeProvider, TimeProvider>();
         services.AddCustomLogging();
         services.AddDatabase(configuration);
-
-        services.Scan(s => s.FromAssemblies(typeof(Extensions).Assembly)
-            .AddClasses(c => c.AssignableTo(typeof(IQueryHandler<,>)))
-            .AsImplementedInterfaces()
-            .WithScopedLifetime());
+        services.AddQueries();
 
         services.AddSwaggerGen(swagger =>
         {

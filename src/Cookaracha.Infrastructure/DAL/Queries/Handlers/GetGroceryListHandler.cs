@@ -1,12 +1,10 @@
 ﻿using Cookaracha.Application.Abstractions;
 using Cookaracha.Application.DTO;
-using Cookaracha.Application.Queries;
 using Cookaracha.Core.Exceptions;
 using Cookaracha.Core.ValueObjects;
-using Cookaracha.Infrastructure.DAL;
 using Microsoft.EntityFrameworkCore;
 
-namespace Cookaracha.Infrastructure.Handlers;
+namespace Cookaracha.Infrastructure.DAL.Queries.Handlers;
 
 internal sealed class GetGroceryListHandler : IQueryHandler<GetGroceryList, GroceryListDto>
 {

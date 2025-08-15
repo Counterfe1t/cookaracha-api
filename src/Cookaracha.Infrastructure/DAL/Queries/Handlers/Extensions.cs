@@ -1,7 +1,7 @@
 ﻿using Cookaracha.Application.DTO;
 using Cookaracha.Core.Entities;
 
-namespace Cookaracha.Infrastructure.Handlers;
+namespace Cookaracha.Infrastructure.DAL.Queries.Handlers;
 
 internal static class Extensions
 {

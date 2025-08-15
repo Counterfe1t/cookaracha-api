@@ -1,7 +1,7 @@
 ﻿using Cookaracha.Application.Abstractions;
 using Cookaracha.Application.Commands;
 using Cookaracha.Application.DTO;
-using Cookaracha.Application.Queries;
+using Cookaracha.Infrastructure.DAL.Queries;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 

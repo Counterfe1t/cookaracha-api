@@ -1,11 +1,9 @@
 ﻿using Cookaracha.Application.Abstractions;
 using Cookaracha.Application.DTO;
-using Cookaracha.Application.Queries;
 using Cookaracha.Core.ValueObjects;
-using Cookaracha.Infrastructure.DAL;
 using Microsoft.EntityFrameworkCore;
 
-namespace Cookaracha.Infrastructure.Handlers;
+namespace Cookaracha.Infrastructure.DAL.Queries.Handlers;
 
 internal class GetItemsHandler : IQueryHandler<GetItems, IEnumerable<ItemDto>>
 {
@@ -17,6 +15,7 @@ internal class GetItemsHandler : IQueryHandler<GetItems, IEnumerable<ItemDto>>
     public async Task<IEnumerable<ItemDto>> HandleAsync(GetItems query)
         => await _dbContext.Items
             .AsNoTracking()
+            .Include(i => i.Product)
             .Where(i => i.GroceryListId == new EntityId(query.GroceryListId))
             .OrderBy(i => i.CreatedAt)
             .Select(i => i.AsDto())
