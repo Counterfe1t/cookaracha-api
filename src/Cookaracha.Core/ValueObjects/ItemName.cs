@@ -15,21 +15,21 @@ public sealed record ItemName
             : throw new InvliadItemNameException(value);
     }
 
-    public static implicit operator string(ItemName id)
-        => id.Value;
+    public static implicit operator string(ItemName name)
+        => name.Value;
 
     public static implicit operator ItemName(string value)
         => new(value);
 
-    public static bool operator ==(ItemName id, string value)
-        => id.Value == value;
+    public static bool operator ==(ItemName name, string value)
+        => name.Value == value;
 
-    public static bool operator !=(ItemName id, string value)
-        => id.Value != value;
+    public static bool operator !=(ItemName name, string value)
+        => name.Value != value;
 
-    public static bool operator ==(string value, ItemName id)
-        => id.Value == value;
+    public static bool operator ==(string value, ItemName name)
+        => name.Value == value;
 
-    public static bool operator !=(string value, ItemName id)
-        => id.Value != value;
+    public static bool operator !=(string value, ItemName name)
+        => name.Value != value;
 }
