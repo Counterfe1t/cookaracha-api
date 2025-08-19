@@ -15,18 +15,18 @@ public interface IItemsRepository
     /// <summary>
     /// Add new item to the grocery list.
     /// </summary>
-    /// <param name="item"><see cref="Item" /> entity model.</param>
+    /// <param name="item"><see cref="Item" /> entity model or null if none was found.</param>
     Task AddAsync(Item item);
 
     /// <summary>
     /// Update item from the grocery list.
     /// </summary>
-    /// <param name="item"><see cref="Item" /> entity model.</param>
+    /// <param name="item"><see cref="Item" /> entity model or null if none was found.</param>
     Task UpdateAsync(Item item);
 
     /// <summary>
     /// Delete item from the grocery list.
     /// </summary>
-    /// <param name="item"><see cref="Item" /> entity model.</param>
+    /// <param name="item"><see cref="Item" /> entity model or null if none was found.</param>
     Task DeleteAsync(Item item);
 }

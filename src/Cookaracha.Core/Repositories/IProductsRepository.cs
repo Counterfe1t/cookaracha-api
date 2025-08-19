@@ -15,31 +15,31 @@ public interface IProductsRepository
     /// Get product by ID.
     /// </summary>
     /// <param name="id">Product ID.</param>
-    /// <returns><see cref="Product"/> object.</returns>
+    /// <returns><see cref="Product"/> entity model or null if none was found.</returns>
     Task<Product?> GetAsync(EntityId id);
 
     /// <summary>
     /// Get product by name.
     /// </summary>
     /// <param name="name">Product name.</param>
-    /// <returns><see cref="Product"/> object.</returns>
+    /// <returns><see cref="Product"/> entity model or null if none was found.</returns>
     Task<Product?> GetAsync(ProductName name);
 
     /// <summary>
     /// Add product.
     /// </summary>
-    /// <param name="product"><see cref="Product"/> object.</param>
+    /// <param name="product"><see cref="Product"/> entity model.</param>
     Task AddAsync(Product product);
 
     /// <summary>
     /// Update product.
     /// </summary>
-    /// <param name="product"><see cref="Product"/> object.</param>
+    /// <param name="product"><see cref="Product"/> entity model.</param>
     Task UpdateAsync(Product product);
 
     /// <summary>
     /// Delete product.
     /// </summary>
-    /// <param name="product"><see cref="Product"/> object.</param>
+    /// <param name="product"><see cref="Product"/> entity model.</param>
     Task DeleteAsync(Product product);
 }

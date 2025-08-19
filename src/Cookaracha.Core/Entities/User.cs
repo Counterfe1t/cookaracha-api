@@ -14,9 +14,11 @@ public sealed class User : EntityBase
     User() { }
 
     public User(
+        EntityId id,
+        Date createdAt,
         UserName name,
         Email email,
-        Password password)
+        Password password) : base(id, createdAt)
     {
         Name = name;
         Email = email;

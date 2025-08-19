@@ -5,6 +5,17 @@ namespace Cookaracha.Infrastructure.DAL.Queries.Handlers;
 
 internal static class Extensions
 {
+    public static UserDto AsDto(this User entity)
+        => new()
+        {
+            Id = entity.Id,
+            CreatedAt = entity.CreatedAt,
+            ModifiedAt = entity.ModifiedAt?.Value,
+            Name = entity.Name,
+            Email = entity.Email,
+            Password = entity.Password,
+        };
+
     public static ProductDto AsDto(this Product entity)
         => new()
         {
