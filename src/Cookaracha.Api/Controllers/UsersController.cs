@@ -15,8 +15,18 @@ public class UsersController : ControllerBase
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status403Forbidden)]
-    public async Task<ActionResult<IEnumerable<ProductDto>>> Get(
+    public async Task<ActionResult<IEnumerable<UserDto>>> Get(
         [FromQuery] GetUsers query,
         [FromServices] IQueryHandler<GetUsers, IEnumerable<UserDto>> handler)
         => Ok(await handler.HandleAsync(query));
+
+    [HttpGet("{id:guid}")]
+    [SwaggerOperation("Get user by ID.")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status403Forbidden)]
+    public async Task<ActionResult<UserDto>> Get(
+        [FromRoute] Guid id,
+        [FromServices] IQueryHandler<GetUser, UserDto> handler)
+        => Ok(await handler.HandleAsync(new(id)));
 }
