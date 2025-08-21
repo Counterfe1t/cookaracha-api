@@ -4,6 +4,7 @@ using Cookaracha.Infrastructure.DAL;
 using Cookaracha.Infrastructure.DAL.Queries;
 using Cookaracha.Infrastructure.Logging;
 using Cookaracha.Infrastructure.Middleware;
+using Cookaracha.Infrastructure.Security;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,6 +25,7 @@ public static class Extensions
         services.AddCustomLogging();
         services.AddDatabase(configuration);
         services.AddQueries();
+        services.AddSecurity();
 
         services.AddSwaggerGen(swagger =>
         {

@@ -20,6 +20,13 @@ public interface IUsersRepository
     Task<User?> GetAsync(Email email);
 
     /// <summary>
+    /// Get user by user name.
+    /// </summary>
+    /// <param name="name">Unique user name.</param>
+    /// <returns><see cref="User" /> entity model or null if none was found.</returns>
+    Task<User?> GetAsync(UserName name);
+
+    /// <summary>
     /// Add user.
     /// </summary>
     /// <param name="user"><see cref="User"/> entity model.</param>

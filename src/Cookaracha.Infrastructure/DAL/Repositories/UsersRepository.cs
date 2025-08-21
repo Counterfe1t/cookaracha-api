@@ -17,6 +17,9 @@ internal sealed class UsersRepository : IUsersRepository
 
     public async Task<User?> GetAsync(Email email)
         => await _dbContext.Users.FirstOrDefaultAsync(u => u.Email == email);
+    
+    public async Task<User?> GetAsync(UserName name)
+        => await _dbContext.Users.FirstOrDefaultAsync(u => u.Name == name);
 
     public async Task AddAsync(User user)
     {
