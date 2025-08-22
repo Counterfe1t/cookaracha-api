@@ -43,4 +43,18 @@ public class UsersController : ControllerBase
         await handler.HandleAsync(command);
         return CreatedAtAction(nameof(Get), new { command.Id }, null);
     }
+
+    [HttpDelete("{id:guid}")]
+    [SwaggerOperation("Delete user by ID.")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status403Forbidden)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<ActionResult> Delete(
+        [FromRoute] Guid id,
+        [FromServices] ICommandHandler<DeleteUser> handler)
+    {
+        await handler.HandleAsync(new(id));
+        return NoContent();
+    }
 }
