@@ -44,6 +44,21 @@ public class UsersController : ControllerBase
         return CreatedAtAction(nameof(Get), new { command.Id }, null);
     }
 
+    [HttpPut("{id:guid}")]
+    [SwaggerOperation("Update user by ID.")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status403Forbidden)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<ActionResult> Put(
+        [FromRoute] Guid id,
+        [FromBody] UpdateUser command,
+        [FromServices] ICommandHandler<UpdateUser> handler)
+    {
+        await handler.HandleAsync(command with { Id = id });
+        return NoContent();
+    }
+
     [HttpDelete("{id:guid}")]
     [SwaggerOperation("Delete user by ID.")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
