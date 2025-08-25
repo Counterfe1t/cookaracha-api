@@ -44,6 +44,19 @@ public class UsersController : ControllerBase
         return CreatedAtAction(nameof(Get), new { command.Id }, null);
     }
 
+    [HttpPost("sign-in")]
+    [SwaggerOperation("Sign in to user account.")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<JwtDto>> Post(
+        [FromBody] SignIn command,
+        [FromServices] ICommandHandler<SignIn> handler,
+        [FromServices] ITokenStorage tokenStorage)
+    {
+        await handler.HandleAsync(command);
+        return Ok(tokenStorage.Get());
+    }
+
     [HttpPut("{id:guid}")]
     [SwaggerOperation("Update user by ID.")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]

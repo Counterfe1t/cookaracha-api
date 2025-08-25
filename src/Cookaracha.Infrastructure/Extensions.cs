@@ -1,4 +1,5 @@
 ﻿using Cookaracha.Core.Abstractions;
+using Cookaracha.Infrastructure.Auth;
 using Cookaracha.Infrastructure.Configuration;
 using Cookaracha.Infrastructure.DAL;
 using Cookaracha.Infrastructure.DAL.Queries;
@@ -20,12 +21,15 @@ public static class Extensions
     {
         var options = configuration.GetOptions<AppOptions>(AppSectionName);
         services.Configure<AppOptions>(configuration.GetSection(AppSectionName));
-        services.AddSingleton<ExceptionMiddleware>();
-        services.AddSingleton<ITimeProvider, TimeProvider>();
-        services.AddCustomLogging();
-        services.AddDatabase(configuration);
-        services.AddQueries();
-        services.AddSecurity();
+
+        services.AddSingleton<ExceptionMiddleware>()
+            .AddSingleton<ITimeProvider, TimeProvider>()
+            .AddHttpContextAccessor()
+            .AddCustomLogging()
+            .AddDatabase(configuration)
+            .AddQueries()
+            .AddSecurity()
+            .AddAuth(configuration);
 
         services.AddSwaggerGen(swagger =>
         {

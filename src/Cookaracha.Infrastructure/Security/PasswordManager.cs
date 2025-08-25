@@ -13,4 +13,7 @@ public sealed class PasswordManager : IPasswordManager
 
     public string HashPassword(string password)
         => _passwordHasher.HashPassword(default!, password);
+
+    public bool ValidatePassword(string password, string hashedPassword)
+        => _passwordHasher.VerifyHashedPassword(default!, hashedPassword, password) is PasswordVerificationResult.Success;
 }
