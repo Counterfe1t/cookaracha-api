@@ -33,7 +33,7 @@ internal sealed class Authenticator : IAuthenticator
 
     public JwtDto CreateToken(Guid userId)
     {
-        var now = _timeProvider.UtcNow;
+        var now = _timeProvider.UtcNow.ToLocalTime();
         var expiresAt = now.Add(_expiry);
 
         var claims = new List<Claim>

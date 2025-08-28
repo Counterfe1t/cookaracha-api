@@ -2,6 +2,7 @@
 using Cookaracha.Application.Commands;
 using Cookaracha.Application.DTO;
 using Cookaracha.Infrastructure.DAL.Queries;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -9,6 +10,7 @@ namespace Cookaracha.Api.Controllers;
 
 [ApiController]
 [Route("api/grocery-lists")]
+[Authorize]
 public class GroceryListsController : ControllerBase
 {
     [HttpGet]

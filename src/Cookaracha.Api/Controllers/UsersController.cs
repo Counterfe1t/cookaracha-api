@@ -2,6 +2,7 @@
 using Cookaracha.Application.Commands;
 using Cookaracha.Application.DTO;
 using Cookaracha.Infrastructure.DAL.Queries;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 
@@ -9,6 +10,7 @@ namespace Cookaracha.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
 public class UsersController : ControllerBase
 {
     [HttpGet]
@@ -32,6 +34,7 @@ public class UsersController : ControllerBase
         => Ok(await handler.HandleAsync(new(id)));
 
     [HttpPost]
+    [AllowAnonymous]
     [SwaggerOperation("Create new user account.")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -45,6 +48,7 @@ public class UsersController : ControllerBase
     }
 
     [HttpPost("sign-in")]
+    [AllowAnonymous]
     [SwaggerOperation("Sign in to user account.")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]

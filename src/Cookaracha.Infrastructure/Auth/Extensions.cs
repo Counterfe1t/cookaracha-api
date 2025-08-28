@@ -29,7 +29,7 @@ internal static class Extensions
             {
                 x.Audience = options.Audience;
                 x.IncludeErrorDetails = true;
-                x.TokenValidationParameters = new TokenValidationParameters
+                x.TokenValidationParameters = new()
                 {
                     ValidIssuer = options.Issuer,
                     ClockSkew = TimeSpan.Zero,
