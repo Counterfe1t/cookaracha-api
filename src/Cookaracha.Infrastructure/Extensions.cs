@@ -6,9 +6,11 @@ using Cookaracha.Infrastructure.DAL.Queries;
 using Cookaracha.Infrastructure.Logging;
 using Cookaracha.Infrastructure.Middleware;
 using Cookaracha.Infrastructure.Security;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OpenApi.Models;
 using TimeProvider = Cookaracha.Infrastructure.Time.TimeProvider;
 
 namespace Cookaracha.Infrastructure;
@@ -33,6 +35,27 @@ public static class Extensions
 
         services.AddSwaggerGen(swagger =>
         {
+            var jwtSecurityScheme = new OpenApiSecurityScheme
+            {
+                BearerFormat = "JWT",
+                Name = "JSON Web Token Authentication",
+                In = ParameterLocation.Header,
+                Type = SecuritySchemeType.Http,
+                Scheme = JwtBearerDefaults.AuthenticationScheme,
+                Description = "Put **_ONLY_** your JWT Bearer token in the textbox below!",
+                Reference = new()
+                {
+                    Id = JwtBearerDefaults.AuthenticationScheme,
+                    Type = ReferenceType.SecurityScheme,
+                }
+            };
+
+            swagger.AddSecurityDefinition("Bearer", jwtSecurityScheme);
+            swagger.AddSecurityRequirement(new()
+            {
+                { jwtSecurityScheme, Array.Empty<string>() }
+            });
+
             swagger.EnableAnnotations();
             swagger.SwaggerDoc(options.Version, new()
             {
