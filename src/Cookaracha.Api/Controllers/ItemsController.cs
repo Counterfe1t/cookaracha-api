@@ -14,7 +14,7 @@ namespace Cookaracha.Api.Controllers;
 public class ItemsController : ControllerBase
 {
     [HttpGet]
-    [SwaggerOperation("Get items from the grocery list.")]
+    [SwaggerOperation("Get items from the grocery list by query.")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status403Forbidden)]

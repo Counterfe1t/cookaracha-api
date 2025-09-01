@@ -14,7 +14,7 @@ namespace Cookaracha.Api.Controllers;
 public class UsersController : ControllerBase
 {
     [HttpGet]
-    [SwaggerOperation("Get all users.")]
+    [SwaggerOperation("Get users by query.")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status403Forbidden)]
@@ -62,7 +62,7 @@ public class UsersController : ControllerBase
     }
 
     [HttpPut("{id:guid}")]
-    [SwaggerOperation("Update user by ID.")]
+    [SwaggerOperation("Update user.")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status403Forbidden)]
@@ -77,7 +77,7 @@ public class UsersController : ControllerBase
     }
 
     [HttpDelete("{id:guid}")]
-    [SwaggerOperation("Delete user by ID.")]
+    [SwaggerOperation("Delete user.")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType(StatusCodes.Status403Forbidden)]
