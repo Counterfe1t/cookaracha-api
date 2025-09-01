@@ -9,7 +9,7 @@ internal static class Extensions
     // TODO: Return API name and health check
     public static WebApplication MapHomeEndpoint(this WebApplication app)
     {
-        app.MapGet(string.Empty, (IOptions<AppOptions> options) => Results.Ok(options.Value.Name))
+        app.MapGet("/api", (IOptions<AppOptions> options) => Results.Ok(options.Value.Name))
             .WithMetadata(new SwaggerOperationAttribute("Get API name."));
 
         return app;
