@@ -17,7 +17,7 @@ internal sealed class ProductConfiguration : IEntityTypeConfiguration<Product>
             .HasConversion(x => x.Value, x => new Date(x))
             .IsRequired();
         builder.Property(p => p.ModifiedAt)
-            .HasConversion(x => x.Value, x => new Date(x));
+            .HasConversion(x => x!.Value, x => new Date(x));
         builder.Property(p => p.Name)
             .HasConversion(x => x.Value, x => new ProductName(x))
             .IsRequired();

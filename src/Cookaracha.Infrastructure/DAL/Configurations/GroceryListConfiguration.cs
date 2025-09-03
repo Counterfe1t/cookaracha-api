@@ -17,7 +17,7 @@ internal sealed class GroceryListConfiguration : IEntityTypeConfiguration<Grocer
             .HasConversion(x => x.Value, x => new Date(x))
             .IsRequired();
         builder.Property(gl => gl.ModifiedAt)
-            .HasConversion(x => x.Value, x => new Date(x));
+            .HasConversion(x => x!.Value, x => new Date(x));
         builder.Property(gl => gl.Name)
             .HasConversion(x => x.Value, x => new GroceryListName(x))
             .IsRequired();

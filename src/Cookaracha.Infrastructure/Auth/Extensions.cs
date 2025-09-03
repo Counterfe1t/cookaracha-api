@@ -33,7 +33,7 @@ internal static class Extensions
                 {
                     ValidIssuer = options.Issuer,
                     ClockSkew = TimeSpan.Zero,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(options.SigningKey))
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(options.SigningKey!))
                 };
             });
 

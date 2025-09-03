@@ -27,7 +27,7 @@ internal sealed class Authenticator : IAuthenticator
         _audience = options.Value.Audience ?? "cookaracha-audience";
         _expiry = options.Value.Expiry ?? TimeSpan.FromHours(1);
         _signingCredentials = new SigningCredentials(
-            new SymmetricSecurityKey(Encoding.UTF8.GetBytes(options.Value.SigningKey)),
+            new SymmetricSecurityKey(Encoding.UTF8.GetBytes(options.Value.SigningKey!)),
             SecurityAlgorithms.HmacSha256);
     }
 

@@ -17,7 +17,7 @@ internal sealed class UserConfiguration : IEntityTypeConfiguration<User>
             .HasConversion(x => x.Value, x => new Date(x))
             .IsRequired();
         builder.Property(u => u.ModifiedAt)
-            .HasConversion(x => x.Value, x => new Date(x));
+            .HasConversion(x => x!.Value, x => new Date(x));
         builder.Property(u => u.Name)
             .HasConversion(x => x.Value, x => new UserName(x))
             .IsRequired();

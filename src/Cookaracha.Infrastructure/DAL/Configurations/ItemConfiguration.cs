@@ -17,12 +17,12 @@ internal sealed class ItemConfiguration : IEntityTypeConfiguration<Item>
             .HasConversion(x => x.Value, x => new Date(x))
             .IsRequired();
         builder.Property(i => i.ModifiedAt)
-            .HasConversion(x => x.Value, x => new Date(x));
+            .HasConversion(x => x!.Value, x => new Date(x));
         builder.Property(i => i.GroceryListId)
             .HasConversion(x => x.Value, x => new EntityId(x))
             .IsRequired();
         builder.Property(i => i.ProductId)
-            .HasConversion(x => x.Value, x => new EntityId(x))
+            .HasConversion(x => x!.Value, x => new EntityId(x))
             .IsRequired(false);
         builder.Property(i => i.Name)
             .HasConversion(x => x.Value, x => new ItemName(x))
