@@ -24,4 +24,13 @@ public sealed class User : EntityBase
         Email = email;
         Password = password;
     }
+
+    public void ChangeName(UserName name)
+        => Name = name;
+
+    public void ChangeEmail(Email email)
+        => Email = email;
+
+    public void ChangePassword(Password password)
+        => Password = password;
 }
