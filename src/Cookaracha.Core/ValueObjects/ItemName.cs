@@ -12,7 +12,7 @@ public sealed record ItemName
     {
         Value = ItemNameValidator.IsValid(value)
             ? ItemNameSanitizer.Sanitize(value)
-            : throw new InvliadItemNameException(value);
+            : throw new InvalidItemNameException(value);
     }
 
     public static implicit operator string(ItemName name)

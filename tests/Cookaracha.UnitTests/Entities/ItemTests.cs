@@ -30,7 +30,7 @@ public class ItemTests
 
         // assert
         exception.ShouldNotBeNull();
-        exception.ShouldBeOfType<InvliadItemNameException>();
+        exception.ShouldBeOfType<InvalidItemNameException>();
     }
 
     [Theory]

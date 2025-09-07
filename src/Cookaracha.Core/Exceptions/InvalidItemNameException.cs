@@ -2,11 +2,11 @@
 
 namespace Cookaracha.Core.Exceptions;
 
-internal sealed class InvliadItemNameException : CustomException
+internal sealed class InvalidItemNameException : CustomException
 {
     public string ItemName { get; }
 
-    public InvliadItemNameException(string itemName)
+    public InvalidItemNameException(string itemName)
         : base($"Item name: '{itemName}' is invalid.")
     {
         StatusCode = (int)HttpStatusCode.BadRequest;
