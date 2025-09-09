@@ -1,5 +1,5 @@
-﻿using Cookaracha.Core.Entities;
-using Cookaracha.Core.Exceptions;
+﻿using Cookaracha.Core.Exceptions;
+using Cookaracha.Core.Sanitization;
 
 namespace Cookaracha.Core.ValueObjects;
 
@@ -14,7 +14,7 @@ public sealed record UserName
             throw new InvalidUserNameException(value);
         }
 
-        Value = value;
+        Value = UserNameSanitizer.Sanitize(value);
     }
 
     public static implicit operator string(UserName name)
