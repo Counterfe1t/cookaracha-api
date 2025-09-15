@@ -50,4 +50,48 @@ public class UserTests
         // assert
         User.Name.Value.ShouldBe(expectedValue);
     }
+
+    [Theory]
+    [InlineData("")]
+    [InlineData("   ")]
+    [InlineData("f")]
+    [InlineData("invalid@email")]
+    [InlineData("email_name_longer_than_fifty_characters_should_throw_exception")]
+    public void ChangeEmail_EmailIsInvalid_ShouldThrowException(string invalidEmail)
+    {
+        // arrange
+        var User = new User(
+            Guid.NewGuid(),
+            DateTimeOffset.UtcNow,
+            "dummy user name",
+            "dummy@cookaracha.net",
+            "dummy password");
+
+        // act
+        var exception = Record.Exception(() => User.ChangeEmail(invalidEmail));
+
+        // assert
+        exception.ShouldNotBeNull();
+        exception.ShouldBeOfType<InvalidEmailException>();
+    }
+
+    [Theory]
+    [InlineData("valid@email.address", "valid@email.address")]
+    [InlineData("VALID@EMAIL.ADDRESS", "valid@email.address")]
+    public void ChangeEmail_EmailIsValid_ShouldSanitizeAndChangeUserName(string newValue, string expectedValue)
+    {
+        // arrange
+        var User = new User(
+            Guid.NewGuid(),
+            DateTimeOffset.UtcNow,
+            "dummy username",
+            "dummy@cookaracha.net",
+            "dummy password");
+
+        // act
+        User.ChangeEmail(newValue);
+
+        // assert
+        User.Email.Value.ShouldBe(expectedValue);
+    }
 }
