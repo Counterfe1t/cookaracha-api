@@ -1,5 +1,4 @@
-﻿using Cookaracha.Core.Entities;
-using Cookaracha.Core.Exceptions;
+﻿using Cookaracha.Core.Exceptions;
 
 namespace Cookaracha.Core.ValueObjects;
 

@@ -11,7 +11,7 @@ public sealed class User : EntityBase
     /// <summary>
     /// Empty constructor is required for EF Core property mapping.
     /// </summary>
-    User() { }
+    private User() { }
 
     public User(
         EntityId id,
